@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 110" fill="none">
+  <!-- Iconic Apple Motif -->
+  <g id="apple">
+    <!-- Leaf & Stem -->
+    <path d="M50 24C50 14 55 8 58 4" stroke="#121316" stroke-width="4" stroke-linecap="round"/>
+    <path d="M54 18C64 12 76 16 80 20C78 28 66 30 54 18Z" fill="#54D167" stroke="#121316" stroke-width="3" stroke-linejoin="round"/>
+    <!-- Apple Body -->
+    <path d="M50 34C40 24 16 26 12 50C8 78 36 100 50 100C64 100 92 78 88 50C84 26 60 24 50 34Z" fill="#E6002B" stroke="#121316" stroke-width="4" stroke-linejoin="round"/>
+    <ellipse cx="32" cy="50" rx="8" ry="14" transform="rotate(-20 32 50)" fill="#FFFFFF" opacity="0.3"/>
+  </g>
+</svg>

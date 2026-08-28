@@ -1,0 +1,195 @@
+---
+import { HOW_IT_WORKS_STEPS } from '@/data/howItWorks';
+import Pill from '@/components/ui/Pill.astro';
+import Sticker from '@/components/ui/Sticker.astro';
+import Icon from '@/components/ui/Icon.astro';
+---
+
+<section class="section section-how-it-works" aria-label="How Participation Works">
+  <div class="container">
+    <div class="section-heading-wrap" data-reveal="fade">
+      <Pill variant="pink">
+        <Icon name="sparkle" size={14} color="var(--color-primary-pink)" />
+        <span>How To Participate</span>
+      </Pill>
+      <h2 class="type-section-title section-main-title">
+        Your 4-Step Journey to <span class="text-pink">Hack The Future</span>
+      </h2>
+      <p class="type-body-lead section-intro-text">
+        From signup to global demo day, here is how you build, learn, and win in a supportive kawaii environment.
+      </p>
+    </div>
+
+    <!-- 4-Step Roadmap Grid with Trail -->
+    <div class="roadmap-grid" data-reveal-stagger>
+      {HOW_IT_WORKS_STEPS.map((step, index) => (
+        <div class="roadmap-step-card">
+          <div class="step-card-top">
+            <div class="step-num-badge">
+              <span>{step.number}</span>
+            </div>
+            <Sticker variant={step.stickerVariant} rotation={index % 2 === 0 ? 'neg-2' : 'pos-2'}>
+              <span>{step.stickerText}</span>
+            </Sticker>
+          </div>
+
+          <div class="step-card-body">
+            <span class="type-label step-kicker">{step.kicker}</span>
+            <h3 class="type-subheading step-title">{step.title}</h3>
+            <p class="type-body step-desc">{step.description}</p>
+          </div>
+
+          <div class="step-card-footer">
+            <div class="step-icon-circle">
+              <Icon name={step.icon} size={20} color="var(--color-primary-pink)" />
+            </div>
+            {step.actionLabel && (
+              <a href={step.actionHref} class="step-action-link">
+                <span>{step.actionLabel}</span>
+                <Icon name="arrow-right" size={14} />
+              </a>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-how-it-works {
+    background-color: var(--color-bg);
+  }
+
+  .section-heading-wrap {
+    max-width: 780px;
+    margin: 0 auto var(--space-3xl);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xs);
+  }
+
+  .section-main-title {
+    margin-top: 0.5rem;
+  }
+
+  .section-intro-text {
+    max-width: 640px;
+    margin-top: var(--space-xs);
+  }
+
+  /* Roadmap Grid */
+  .roadmap-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .roadmap-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .roadmap-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .roadmap-step-card {
+    background-color: var(--color-surface);
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: 1.75rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.25rem;
+    box-shadow: var(--shadow-subtle);
+    transition: transform var(--duration-normal) var(--ease-spring), border-color var(--duration-fast) var(--ease-standard);
+  }
+
+  .roadmap-step-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-text-dark);
+  }
+
+  .step-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .step-num-badge {
+    width: 38px;
+    height: 38px;
+    border-radius: var(--radius-pill);
+    background-color: var(--color-text-dark);
+    color: #FFFFFF;
+    font-family: var(--font-family-mono);
+    font-weight: 800;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .step-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .step-kicker {
+    font-size: 0.75rem;
+    color: var(--color-primary-pink);
+  }
+
+  .step-title {
+    font-size: 1.25rem;
+    line-height: 1.25;
+  }
+
+  .step-desc {
+    font-size: 0.925rem;
+    color: var(--color-text-muted);
+  }
+
+  .step-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .step-icon-circle {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-pill);
+    background-color: var(--color-primary-pink-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .step-action-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-family: var(--font-family-display);
+    font-weight: 700;
+    font-size: 0.825rem;
+    color: var(--color-primary-pink);
+    text-decoration: none;
+    transition: transform var(--duration-fast) var(--ease-standard);
+  }
+
+  .step-action-link:hover {
+    transform: translateX(3px);
+  }
+</style>

@@ -1,0 +1,592 @@
+---
+import { HACKATHON_CONFIG } from '@/data/hackathon';
+import Button from '@/components/ui/Button.astro';
+import Icon from '@/components/ui/Icon.astro';
+import Sticker from '@/components/ui/Sticker.astro';
+---
+
+<header class="navbar-wrapper" id="site-navbar" role="banner">
+  <div class="container navbar-container">
+    <nav class="navbar-inner" aria-label="Main Navigation">
+      <!-- Brand Logo -->
+      <a href="#hero-scene" class="brand-link" aria-label="Hack The Future Home">
+        <span class="brand-bow-wrap">
+          <Icon name="bow" size={26} color="var(--color-red)" />
+        </span>
+        <span class="brand-text">
+          <span class="brand-title">HACK THE FUTURE</span>
+          <span class="brand-sub">HELLO KITTY 2026</span>
+        </span>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <ul class="nav-links-desktop" role="list">
+        {HACKATHON_CONFIG.navItems.map((item) => (
+          <li class="nav-item">
+            <a href={item.href} class="nav-link">
+              <span class="link-label">{item.label}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <!-- Right Actions: Register Button + Mobile Menu Toggle -->
+      <div class="nav-actions">
+        <div class="desktop-cta-wrap">
+          <Button href={HACKATHON_CONFIG.registrationUrl} variant="primary" size="sm" id="nav-register-btn">
+            <span>Register</span>
+            <Icon name="sparkle" size={14} color="#FFFFFF" />
+          </Button>
+        </div>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button
+          type="button"
+          class="mobile-menu-toggle"
+          id="mobile-menu-toggle-btn"
+          aria-label="Open Navigation Menu"
+          aria-expanded="false"
+          aria-controls="mobile-nav-overlay"
+        >
+          <span class="hamburger-box" aria-hidden="true">
+            <span class="hamburger-line line-1"></span>
+            <span class="hamburger-line line-2"></span>
+            <span class="hamburger-line line-3"></span>
+          </span>
+        </button>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Full-Screen Mobile Navigation Overlay -->
+  <div
+    class="mobile-nav-overlay"
+    id="mobile-nav-overlay"
+    aria-hidden="true"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Mobile Navigation Menu"
+  >
+    <div class="mobile-nav-backdrop" id="mobile-nav-backdrop"></div>
+
+    <div class="mobile-nav-content">
+      <div class="mobile-nav-header">
+        <div class="mobile-brand">
+          <Icon name="bow" size={24} color="var(--color-red)" />
+          <span class="mobile-brand-title">HACK THE FUTURE</span>
+        </div>
+        <button
+          type="button"
+          class="mobile-close-btn"
+          id="mobile-nav-close-btn"
+          aria-label="Close Navigation Menu"
+        >
+          <span class="close-icon" aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="mobile-stickers-row">
+        <Sticker variant="pink" rotation="neg-2">
+          <Icon name="sparkle" size={14} color="var(--color-primary-pink)" />
+          <span>30-Hour National Hack</span>
+        </Sticker>
+        <Sticker variant="yellow" rotation="pos-2">
+          <span>Tula's &bull; Dehradun</span>
+        </Sticker>
+      </div>
+
+      <nav class="mobile-nav-menu" aria-label="Mobile Links">
+        <ul class="mobile-nav-list" role="list">
+          {HACKATHON_CONFIG.navItems.map((item, index) => (
+            <li class="mobile-nav-item">
+              <a href={item.href} class="mobile-nav-link" data-mobile-link>
+                <span class="mobile-link-index">{String(index + 1).padStart(2, '0')}</span>
+                <span class="mobile-link-text">{item.label}</span>
+                <span class="mobile-link-arrow">
+                  <Icon name="arrow-right" size={20} color="var(--color-primary-pink)" />
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <div class="mobile-nav-footer">
+        <Button href={HACKATHON_CONFIG.registrationUrl} variant="primary" size="lg" class="mobile-register-cta" data-mobile-link>
+          <span>Register Now</span>
+          <Icon name="sparkle" size={18} color="#FFFFFF" />
+        </Button>
+
+        <div class="mobile-footer-meta">
+          <p class="type-metadata">Official Hello Kitty Hackathon &bull; 2026</p>
+          <div class="mobile-social-links">
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="GitHub">
+              <Icon name="github" size={18} />
+            </a>
+            <a href="https://discord.com" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="Discord">
+              <Icon name="discord" size={18} />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  import { gsap } from 'gsap';
+  import { isReducedMotion, getLenis } from '@/animations/scroll';
+  import { initMagnetic } from '@/animations/interactions';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const navbar = document.getElementById('site-navbar');
+    const toggleBtn = document.getElementById('mobile-menu-toggle-btn');
+    const closeBtn = document.getElementById('mobile-nav-close-btn');
+    const overlay = document.getElementById('mobile-nav-overlay');
+    const backdrop = document.getElementById('mobile-nav-backdrop');
+    const mobileLinks = document.querySelectorAll('[data-mobile-link]');
+    const registerBtn = document.getElementById('nav-register-btn');
+
+    const reduced = isReducedMotion();
+
+    // 1. Initial Navbar Entrance Animation
+    if (navbar && !reduced) {
+      gsap.fromTo(
+        navbar,
+        { y: -20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out', delay: 0.1 }
+      );
+    }
+
+    // 2. Desktop Magnetic Register Button
+    if (registerBtn) {
+      initMagnetic(registerBtn, { strength: 0.25 });
+    }
+
+    // 3. Mobile Navigation Menu Toggle
+    let isMenuOpen = false;
+
+    const openMenu = () => {
+      if (!overlay || isMenuOpen) return;
+      isMenuOpen = true;
+
+      toggleBtn?.setAttribute('aria-expanded', 'true');
+      overlay.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('nav-menu-open');
+
+      const lenis = getLenis();
+      lenis?.stop();
+
+      overlay.style.display = 'flex';
+      gsap.fromTo(
+        overlay,
+        { opacity: 0 },
+        { opacity: 1, duration: reduced ? 0.15 : 0.3, ease: 'power2.out' }
+      );
+      gsap.fromTo(
+        '.mobile-nav-content',
+        { y: reduced ? 0 : 25, opacity: reduced ? 1 : 0 },
+        { y: 0, opacity: 1, duration: 0.35, ease: 'power3.out' }
+      );
+    };
+
+    const closeMenu = () => {
+      if (!overlay || !isMenuOpen) return;
+      isMenuOpen = false;
+
+      toggleBtn?.setAttribute('aria-expanded', 'false');
+      overlay.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('nav-menu-open');
+
+      const lenis = getLenis();
+      lenis?.start();
+
+      gsap.to(overlay, {
+        opacity: 0,
+        duration: reduced ? 0.15 : 0.25,
+        ease: 'power2.in',
+        onComplete: () => {
+          overlay.style.display = 'none';
+        },
+      });
+    };
+
+    toggleBtn?.addEventListener('click', () => {
+      if (isMenuOpen) closeMenu();
+      else openMenu();
+    });
+
+    closeBtn?.addEventListener('click', closeMenu);
+    backdrop?.addEventListener('click', closeMenu);
+
+    mobileLinks.forEach((link) => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && isMenuOpen) {
+        closeMenu();
+      }
+    });
+  });
+</script>
+
+<style>
+  /* --------------------------------------------------------------------------
+     Navbar Outer Layout & Floating Frame
+     -------------------------------------------------------------------------- */
+  .navbar-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 900;
+    padding: 0.75rem 1rem;
+    pointer-events: none;
+  }
+
+  .navbar-container {
+    display: flex;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .navbar-inner {
+    width: 100%;
+    max-width: 1080px;
+    height: 3.5rem;
+    padding: 0.35rem 0.75rem 0.35rem 1.15rem;
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-pill);
+    box-shadow: 0 6px 24px -4px rgba(20, 20, 23, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    pointer-events: auto;
+    transition: background-color var(--duration-fast) var(--ease-standard), border-color var(--duration-fast) var(--ease-standard);
+  }
+
+  .navbar-inner:hover {
+    background: rgba(255, 255, 255, 0.98);
+    border-color: #D8D0C5;
+  }
+
+  /* --------------------------------------------------------------------------
+     Brand Logo & Vector Bow
+     -------------------------------------------------------------------------- */
+  .brand-link {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    text-decoration: none;
+    user-select: none;
+    flex-shrink: 0;
+  }
+
+  .brand-bow-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform var(--duration-fast) var(--ease-spring);
+  }
+
+  .brand-link:hover .brand-bow-wrap {
+    transform: rotate(-10deg) scale(1.1);
+  }
+
+  .brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+
+  .brand-title {
+    font-family: var(--font-family-display);
+    font-weight: 800;
+    font-size: 0.9rem;
+    letter-spacing: -0.02em;
+    color: var(--color-text-dark);
+  }
+
+  .brand-sub {
+    font-family: var(--font-family-mono);
+    font-weight: 700;
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    color: var(--color-primary-pink);
+  }
+
+  /* --------------------------------------------------------------------------
+     Desktop Nav Links
+     -------------------------------------------------------------------------- */
+  .nav-links-desktop {
+    display: none;
+    align-items: center;
+    list-style: none;
+    gap: 0.35rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  @media (min-width: 860px) {
+    .nav-links-desktop {
+      display: flex;
+    }
+  }
+
+  .nav-item {
+    position: relative;
+    list-style: none;
+  }
+
+  .nav-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.4rem 0.85rem;
+    border-radius: var(--radius-pill);
+    font-family: var(--font-family-display);
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color var(--duration-fast) var(--ease-standard), background-color var(--duration-fast) var(--ease-standard);
+  }
+
+  .nav-link:hover {
+    color: var(--color-primary-pink);
+    background-color: var(--color-primary-pink-subtle);
+  }
+
+  /* --------------------------------------------------------------------------
+     Right Actions & Mobile Toggle
+     -------------------------------------------------------------------------- */
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .desktop-cta-wrap {
+    display: flex;
+  }
+
+  .mobile-menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.35rem;
+    height: 2.35rem;
+    border-radius: var(--radius-pill);
+    background-color: var(--color-surface);
+    border: 1.5px solid var(--color-border);
+    cursor: pointer;
+    transition: background-color var(--duration-fast) var(--ease-standard), transform var(--duration-fast) var(--ease-spring);
+  }
+
+  .mobile-menu-toggle:hover {
+    background-color: var(--color-bg);
+    transform: scale(1.05);
+  }
+
+  @media (min-width: 860px) {
+    .mobile-menu-toggle {
+      display: none;
+    }
+  }
+
+  .hamburger-box {
+    width: 18px;
+    height: 12px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .hamburger-line {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-text-dark);
+    border-radius: 2px;
+  }
+
+  /* --------------------------------------------------------------------------
+     Full-Screen Mobile Navigation Overlay
+     -------------------------------------------------------------------------- */
+  .mobile-nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    z-index: 1000;
+    display: none;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: hidden;
+    pointer-events: auto;
+  }
+
+  .mobile-nav-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(18, 19, 22, 0.45);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .mobile-nav-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    background: #FAF7F4;
+    display: flex;
+    flex-direction: column;
+    padding: clamp(1.25rem, 4vw, 2.5rem);
+    overflow-y: auto;
+  }
+
+  .mobile-nav-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 1.25rem;
+    border-bottom: 1.5px solid var(--color-border);
+  }
+
+  .mobile-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .mobile-brand-title {
+    font-family: var(--font-family-display);
+    font-weight: 800;
+    font-size: 1.05rem;
+    color: var(--color-text-dark);
+  }
+
+  .mobile-close-btn {
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-pill);
+    background-color: var(--color-surface);
+    border: 1.5px solid var(--color-border);
+    font-size: 1.5rem;
+    line-height: 1;
+    color: var(--color-text-dark);
+    cursor: pointer;
+  }
+
+  .mobile-stickers-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin: 1.5rem 0 1rem;
+  }
+
+  .mobile-nav-menu {
+    flex: 1;
+    margin: 1rem 0;
+  }
+
+  .mobile-nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .mobile-nav-item {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .mobile-nav-link {
+    display: flex;
+    align-items: center;
+    padding: 0.85rem 0.25rem;
+    text-decoration: none;
+  }
+
+  .mobile-link-index {
+    font-family: var(--font-family-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-primary-pink);
+    width: 2.2rem;
+  }
+
+  .mobile-link-text {
+    font-family: var(--font-family-display);
+    font-size: clamp(1.35rem, 4vw, 1.75rem);
+    font-weight: 800;
+    color: var(--color-text-dark);
+    letter-spacing: -0.02em;
+    flex: 1;
+  }
+
+  .mobile-link-arrow {
+    display: flex;
+    align-items: center;
+    opacity: 0.5;
+  }
+
+  .mobile-nav-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-top: auto;
+    padding-top: 1.5rem;
+    border-top: 1.5px solid var(--color-border);
+  }
+
+  .mobile-register-cta {
+    width: 100%;
+  }
+
+  .mobile-footer-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--color-text-muted);
+  }
+
+  .mobile-social-links {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .social-icon-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: var(--radius-pill);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-dark);
+  }
+
+  /* Body scroll lock */
+  :global(body.nav-menu-open) {
+    overflow: hidden;
+  }
+</style>

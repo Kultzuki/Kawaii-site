@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 180" fill="none">
+  <!-- Iconic Cute Cottage / Sanrio-style House -->
+  <g id="kawaii-house">
+    <!-- Chimney -->
+    <rect x="135" y="24" width="20" height="40" fill="#E6002B" stroke="#121316" stroke-width="4"/>
+    <!-- House Body -->
+    <rect x="35" y="75" width="130" height="90" rx="10" fill="#FFF8EB" stroke="#121316" stroke-width="4"/>
+    <!-- Red Roof with Scallop Overhang -->
+    <path d="M15 80L100 15L185 80L15 80Z" fill="#E6002B" stroke="#121316" stroke-width="4" stroke-linejoin="round"/>
+    <circle cx="100" cy="50" r="14" fill="#FFFFFF" stroke="#121316" stroke-width="3"/>
+    <!-- Door -->
+    <rect x="80" y="110" width="40" height="55" rx="6" fill="#2264E5" stroke="#121316" stroke-width="4"/>
+    <circle cx="89" cy="138" r="4" fill="#FFC837" stroke="#121316" stroke-width="2"/>
+    <!-- Windows -->
+    <rect x="48" y="98" width="22" height="22" rx="4" fill="#FFFFFF" stroke="#121316" stroke-width="3"/>
+    <rect x="130" y="98" width="22" height="22" rx="4" fill="#FFFFFF" stroke="#121316" stroke-width="3"/>
+  </g>
+</svg>

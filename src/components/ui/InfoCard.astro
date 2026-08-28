@@ -1,0 +1,44 @@
+---
+import Sticker from './Sticker.astro';
+
+interface Props {
+  variant?: 'default' | 'organic' | 'organic-alt';
+  stickerText?: string;
+  stickerVariant?: 'pink' | 'yellow' | 'blue' | 'cream';
+  class?: string;
+}
+
+const {
+  variant = 'default',
+  stickerText,
+  stickerVariant = 'yellow',
+  class: className = '',
+  ...rest
+} = Astro.props;
+
+const variantClass = variant === 'organic' 
+  ? 'info-card-organic' 
+  : variant === 'organic-alt' 
+  ? 'info-card-organic-alt' 
+  : '';
+---
+
+<div class={`info-card ${variantClass} ${className}`} {...rest}>
+  {stickerText && (
+    <div class="card-sticker-wrapper">
+      <Sticker variant={stickerVariant} rotation="neg-3">
+        {stickerText}
+      </Sticker>
+    </div>
+  )}
+  <slot />
+</div>
+
+<style>
+  .card-sticker-wrapper {
+    position: absolute;
+    top: -14px;
+    right: 18px;
+    z-index: 2;
+  }
+</style>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 70" fill="none">
+  <!-- Wrapped Kawaii Sweet / Candy Motif -->
+  <g id="candy">
+    <!-- Left Wrapper Twist -->
+    <path d="M40 35L10 15C8 28 8 42 10 55L40 35Z" fill="#FF85A2" stroke="#121316" stroke-width="3.5" stroke-linejoin="round"/>
+    <!-- Right Wrapper Twist -->
+    <path d="M80 35L110 15C112 28 112 42 110 55L80 35Z" fill="#FF85A2" stroke="#121316" stroke-width="3.5" stroke-linejoin="round"/>
+    <!-- Candy Center Body -->
+    <ellipse cx="60" cy="35" rx="26" ry="22" fill="#FFFFFF" stroke="#121316" stroke-width="4"/>
+    <!-- Diagonal Stripes -->
+    <path d="M48 16C54 22 54 48 48 54" stroke="#FF3366" stroke-width="6" stroke-linecap="round"/>
+    <path d="M60 13C66 21 66 49 60 57" stroke="#FFC837" stroke-width="6" stroke-linecap="round"/>
+    <path d="M72 16C78 22 78 48 72 54" stroke="#2264E5" stroke-width="6" stroke-linecap="round"/>
+  </g>
+</svg>

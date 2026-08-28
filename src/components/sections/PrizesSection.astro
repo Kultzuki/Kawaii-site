@@ -1,0 +1,617 @@
+---
+import { PRIZES_DATA } from '@/data/prizes';
+import Pill from '@/components/ui/Pill.astro';
+import Sticker from '@/components/ui/Sticker.astro';
+import Icon from '@/components/ui/Icon.astro';
+---
+
+<section id="prizes" class="section section-prizes" aria-label="Hackathon Prizes and Awards">
+  <div class="container">
+    <!-- Header -->
+    <div class="section-heading-wrap" data-reveal="fade">
+      <Pill variant="yellow">
+        <Icon name="trophy" size={14} color="#946800" />
+        <span>{PRIZES_DATA.totalPool} Prize Pool</span>
+      </Pill>
+      <h2 class="type-section-title section-main-title">
+        Rewarding <span class="text-pink">National Champions</span>
+      </h2>
+      <p class="type-body-lead section-intro-text">
+        Prizes are awarded for overall event excellence across all tracks! Featuring ₹65K 1st, ₹45K 2nd, ₹35K 3rd cash awards plus ₹1.5 Lakh incubation grants per winning team from Tula's University TBI, and ₹10K consolation awards for 4th & 5th place.
+      </p>
+    </div>
+
+    <!-- 1. Top 3 Podium Winners Grid -->
+    <div class="podium-section" data-reveal="slide">
+      <div class="podium-heading-wrap">
+        <Sticker variant="yellow" rotation="pos-2">
+          <Icon name="trophy" size={16} color="#946800" />
+          <span>TOP 3 OVERALL NATIONAL PODIUM</span>
+        </Sticker>
+        <span class="type-metadata podium-sub">Each top 3 winner receives ₹1.5 Lakhs in dedicated incubation grant support</span>
+      </div>
+
+      <div class="podium-grid">
+        {PRIZES_DATA.podiumPrizes.map((prize) => (
+          <div class={`podium-card podium-card-${prize.badgeVariant} ${prize.isGrandPrize ? 'is-first-place' : ''}`}>
+            {prize.isGrandPrize && (
+              <div class="podium-crown-badge">
+                <Icon name="sparkle" size={14} color="#946800" />
+                <span>GRAND CHAMPION</span>
+              </div>
+            )}
+
+            <div class="podium-card-top">
+              <div class={`podium-trophy-circle circle-${prize.badgeVariant}`}>
+                <Icon name="trophy" size={prize.isGrandPrize ? 38 : 30} color={prize.isGrandPrize ? '#E6002B' : 'currentColor'} />
+              </div>
+              <span class="podium-rank-tag">{prize.rank}</span>
+            </div>
+
+            <h3 class="podium-card-title">{prize.title}</h3>
+
+            <div class="podium-cash-badge">
+              <span class="podium-cash-main">{prize.cashAmount}</span>
+              <span class="podium-plus-sign">+</span>
+              <span class="podium-incubation-grant">{prize.incubationAmount}</span>
+            </div>
+
+            <p class="type-body podium-card-desc">{prize.description}</p>
+
+            <div class="podium-perks-list">
+              {prize.perks.map((perk) => (
+                <div class="podium-perk-row">
+                  <Icon name="sparkle" size={13} color="var(--color-primary-pink)" />
+                  <span class="type-metadata perk-txt">{perk}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- 2. Consolation Prizes (4th & 5th Place) -->
+    <div class="consolation-prizes-section" data-reveal="fade">
+      <div class="consolation-heading">
+        <Pill variant="pink">
+          <Icon name="sparkle" size={12} color="var(--color-primary-pink)" />
+          <span>Consolation Awards</span>
+        </Pill>
+        <h3 class="type-subheading">4th & 5th Place Consolation Prizes</h3>
+      </div>
+
+      <div class="consolation-grid" data-reveal-stagger>
+        {PRIZES_DATA.consolationPrizes.map((prize, index) => (
+          <div class="consolation-card">
+            <div class="consolation-top">
+              <span class="consolation-rank-tag">{prize.rank}</span>
+              <Sticker variant={prize.badgeVariant} rotation={index % 2 === 0 ? 'neg-2' : 'pos-2'}>
+                <Icon name="trophy" size={14} color="var(--color-primary-pink)" />
+                <span>{prize.amount}</span>
+              </Sticker>
+            </div>
+
+            <h4 class="type-subheading consolation-title">{prize.title}</h4>
+            <p class="type-body consolation-desc">{prize.description}</p>
+
+            <div class="consolation-perks">
+              {prize.perks.map((p) => (
+                <span class="consolation-perk-bullet">&bull; {p}</span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- 3. Special Awards & Exclusive Swag Row -->
+    <div class="special-and-swag-grid" data-reveal="slide">
+      <!-- Special Category Awards -->
+      <div class="special-awards-box">
+        <h4 class="type-subheading special-box-title">Special Category Awards (₹10,000 Each)</h4>
+        <div class="special-awards-list">
+          {PRIZES_DATA.specialAwards.map((award) => (
+            <div class="special-award-item">
+              <div class="special-icon-bullet">
+                <Icon name={award.icon} size={16} color="var(--color-primary-pink)" />
+              </div>
+              <div class="special-info">
+                <div class="special-title-row">
+                  <span class="special-name">{award.title}</span>
+                  <span class="special-cash">{award.amount}</span>
+                </div>
+                <p class="type-body special-desc">{award.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Swag Package -->
+      <div class="swag-box">
+        <div class="swag-header">
+          <Icon name="bow" size={24} color="var(--color-red)" />
+          <h4 class="type-subheading special-box-title">Participant Swag Pack</h4>
+        </div>
+        <p class="type-body swag-intro">Every registered hacker receives the exclusive limited-edition creator bundle:</p>
+
+        <div class="swag-items-list">
+          {PRIZES_DATA.swag.map((item) => (
+            <div class="swag-card">
+              <div class="swag-icon-bullet">
+                <Icon name={item.icon} size={16} color="var(--color-primary-pink)" />
+              </div>
+              <div class="swag-text">
+                <span class="swag-name">{item.name}</span>
+                <span class="type-metadata swag-desc">{item.description}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-prizes {
+    background-color: var(--color-bg);
+  }
+
+  .section-heading-wrap {
+    max-width: 780px;
+    margin: 0 auto var(--space-3xl);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xs);
+  }
+
+  .section-main-title {
+    margin-top: 0.5rem;
+  }
+
+  .section-intro-text {
+    max-width: 640px;
+    margin-top: var(--space-xs);
+  }
+
+  /* --------------------------------------------------------------------------
+     Podium Section (1st, 2nd, 3rd)
+     -------------------------------------------------------------------------- */
+  .podium-section {
+    margin-bottom: var(--space-3xl);
+  }
+
+  .podium-heading-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .podium-sub {
+    font-size: 0.9rem;
+    color: var(--color-primary-pink);
+    font-weight: 700;
+  }
+
+  .podium-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+    align-items: stretch;
+  }
+
+  @media (min-width: 860px) {
+    .podium-grid {
+      grid-template-columns: 1fr 1.12fr 1fr;
+    }
+  }
+
+  .podium-card {
+    position: relative;
+    background-color: var(--color-surface);
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    box-shadow: var(--shadow-subtle);
+    transition: transform var(--duration-fast) var(--ease-spring), box-shadow var(--duration-fast) var(--ease-standard);
+  }
+
+  .podium-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card);
+  }
+
+  .podium-card.is-first-place {
+    background: radial-gradient(circle at 50% 15%, #FFFDF5 0%, #FFF8EB 100%);
+    border: 2.5px solid #FFC837;
+    box-shadow: 0 16px 36px -8px rgba(255, 200, 55, 0.28);
+  }
+
+  @media (min-width: 860px) {
+    .podium-card.is-first-place {
+      transform: translateY(-10px);
+    }
+    .podium-card.is-first-place:hover {
+      transform: translateY(-14px);
+    }
+  }
+
+  .podium-crown-badge {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--color-yellow);
+    color: #594000;
+    font-family: var(--font-family-display);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    padding: 0.25rem 0.85rem;
+    border-radius: var(--radius-pill);
+    border: 1.5px solid #EBB224;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    white-space: nowrap;
+    box-shadow: 0 4px 10px rgba(255, 200, 55, 0.3);
+  }
+
+  .podium-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 0.25rem;
+  }
+
+  .podium-trophy-circle {
+    width: 52px;
+    height: 52px;
+    border-radius: var(--radius-pill);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid var(--color-border);
+  }
+
+  .circle-yellow {
+    background: radial-gradient(circle, #FFF2B2 0%, #FFE57F 100%);
+    border-color: #FFC837;
+    color: #E6002B;
+  }
+
+  .circle-pink {
+    background-color: var(--color-primary-pink-subtle);
+    border-color: var(--color-border-pink);
+    color: var(--color-primary-pink);
+  }
+
+  .circle-blue {
+    background-color: var(--color-blue-subtle);
+    border-color: #C2D7FF;
+    color: var(--color-blue);
+  }
+
+  .podium-rank-tag {
+    font-family: var(--font-family-mono);
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-muted);
+  }
+
+  .podium-card-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--color-text-dark);
+  }
+
+  .podium-cash-badge {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding: 0.75rem 1rem;
+    background-color: var(--color-surface);
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-md);
+  }
+
+  .podium-card.is-first-place .podium-cash-badge {
+    background-color: #FFFFFF;
+    border-color: #FFD166;
+  }
+
+  .podium-cash-main {
+    font-family: var(--font-family-display);
+    font-size: 1.55rem;
+    font-weight: 900;
+    color: var(--color-red);
+    line-height: 1.1;
+  }
+
+  .podium-plus-sign {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--color-text-muted);
+    line-height: 1;
+  }
+
+  .podium-incubation-grant {
+    font-family: var(--font-family-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-primary-pink);
+  }
+
+  .podium-card-desc {
+    font-size: 0.9rem;
+    color: var(--color-text-body);
+  }
+
+  .podium-perks-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-top: auto;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .podium-perk-row {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+
+  .perk-txt {
+    font-size: 0.8rem;
+    color: var(--color-text-body);
+  }
+
+  /* --------------------------------------------------------------------------
+     Consolation Prizes (4th & 5th Place)
+     -------------------------------------------------------------------------- */
+  .consolation-prizes-section {
+    margin-bottom: var(--space-3xl);
+  }
+
+  .consolation-heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    margin-bottom: var(--space-xl);
+    text-align: center;
+  }
+
+  .consolation-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .consolation-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .consolation-card {
+    background-color: var(--color-surface);
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    box-shadow: var(--shadow-subtle);
+    transition: transform var(--duration-fast) var(--ease-spring), border-color var(--duration-fast) var(--ease-standard);
+  }
+
+  .consolation-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--color-text-dark);
+  }
+
+  .consolation-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .consolation-rank-tag {
+    font-family: var(--font-family-mono);
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: var(--color-primary-pink);
+    text-transform: uppercase;
+  }
+
+  .consolation-title {
+    font-size: 1.15rem;
+    color: var(--color-text-dark);
+  }
+
+  .consolation-desc {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+
+  .consolation-perks {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-top: auto;
+    font-family: var(--font-family-mono);
+    font-size: 0.775rem;
+    color: var(--color-text-body);
+    font-weight: 600;
+  }
+
+  /* --------------------------------------------------------------------------
+     Special Awards & Swag Pack
+     -------------------------------------------------------------------------- */
+  .special-and-swag-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  @media (min-width: 860px) {
+    .special-and-swag-grid {
+      grid-template-columns: 1.2fr 0.8fr;
+    }
+  }
+
+  .special-awards-box,
+  .swag-box {
+    background-color: var(--color-surface);
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    box-shadow: var(--shadow-subtle);
+  }
+
+  .special-box-title {
+    font-size: 1.25rem;
+  }
+
+  .special-awards-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .special-award-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .special-award-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .special-icon-bullet {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-pill);
+    background-color: var(--color-primary-pink-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 0.2rem;
+  }
+
+  .special-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    width: 100%;
+  }
+
+  .special-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .special-name {
+    font-family: var(--font-family-display);
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--color-text-dark);
+  }
+
+  .special-cash {
+    font-family: var(--font-family-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-primary-pink);
+    background-color: var(--color-primary-pink-subtle);
+    padding: 0.15rem 0.5rem;
+    border-radius: var(--radius-pill);
+  }
+
+  .special-desc {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+  }
+
+  /* Swag Box */
+  .swag-header {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+  }
+
+  .swag-intro {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+  }
+
+  .swag-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .swag-card {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+  }
+
+  .swag-icon-bullet {
+    width: 28px;
+    height: 28px;
+    border-radius: var(--radius-pill);
+    background-color: #FFFFFF;
+    border: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .swag-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .swag-name {
+    font-family: var(--font-family-display);
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--color-text-dark);
+  }
+
+  .swag-desc {
+    font-size: 0.8rem;
+  }
+</style>

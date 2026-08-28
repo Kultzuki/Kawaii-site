@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" fill="none">
+  <!-- Official Hackathon Logo -->
+  <g id="logo">
+    <!-- Bow Icon Left -->
+    <g transform="translate(10, 15) scale(0.6)">
+      <path d="M52 45C32 20 8 26 5 44C2 62 25 70 48 54L52 45Z" fill="#E6002B" stroke="#121316" stroke-width="4"/>
+      <path d="M68 45C88 20 112 26 115 44C118 62 95 70 72 54L68 45Z" fill="#E6002B" stroke="#121316" stroke-width="4"/>
+      <ellipse cx="60" cy="46" rx="14" ry="16" fill="#E6002B" stroke="#121316" stroke-width="4"/>
+    </g>
+
+    <!-- Typography -->
+    <text x="90" y="38" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="22" fill="#121316" letter-spacing="-0.5">HACK THE FUTURE</text>
+    <text x="90" y="56" font-family="'JetBrains Mono', monospace" font-weight="700" font-size="11" fill="#FF3366" letter-spacing="1.5">HELLO KITTY HACKATHON 2026</text>
+  </g>
+</svg>

@@ -1,0 +1,353 @@
+---
+import { HACKATHON_CONFIG } from '@/data/hackathon';
+import Icon from '@/components/ui/Icon.astro';
+---
+
+<footer class="site-footer" role="contentinfo" aria-label="Site Footer">
+  <!-- Illustrated World Conclusion Horizon -->
+  <div class="footer-cloud-horizon" aria-hidden="true">
+    <img
+      src="/assets/environments/cloud-hero-layer.svg"
+      alt=""
+      class="footer-cloud-img"
+      width="1440"
+      height="120"
+      loading="lazy"
+    />
+  </div>
+
+  <div class="container footer-inner-container">
+    <!-- Top Footer Bar: Brand & Final Mini CTA -->
+    <div class="footer-top-row">
+      <div class="footer-brand-col">
+        <a href="#hero-scene" class="footer-logo-link" aria-label="Hack The Future Home">
+          <div class="footer-bow-icon" id="footer-animated-bow">
+            <Icon name="bow" size={24} color="var(--color-red)" />
+          </div>
+          <span class="footer-brand-title">HACK THE FUTURE // 2026</span>
+        </a>
+        <p class="footer-brand-tagline">
+          India's Flagship 36-Hour National Level Hackathon organized on September 25–26 by the Department of CSE, Tula's University, Dehradun in association with Tula's ACM Chapter. ₹7 Lakhs+ total prize pool.
+        </p>
+      </div>
+
+      <div class="footer-cta-col">
+        <a href="#register" class="footer-register-pill">
+          <span>Register Team (₹500 / Head)</span>
+          <Icon name="sparkle" size={14} color="#FFFFFF" />
+        </a>
+      </div>
+    </div>
+
+    <!-- Middle Navigation & Links Grid -->
+    <div class="footer-links-grid">
+      <!-- Col 1: Navigation -->
+      <div class="footer-nav-group">
+        <span class="footer-group-title">Explore</span>
+        <ul class="footer-links-list" role="list">
+          <li><a href="#about" class="footer-link">About Hackathon</a></li>
+          <li><a href="#tracks" class="footer-link">5 Challenge Tracks</a></li>
+          <li><a href="#schedule" class="footer-link">36-Hour Schedule</a></li>
+          <li><a href="#prizes" class="footer-link">₹7 Lakhs Prizes</a></li>
+          <li><a href="#faq" class="footer-link">Frequently Asked Questions</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 2: Resources & Community -->
+      <div class="footer-nav-group">
+        <span class="footer-group-title">Community & Contact</span>
+        <ul class="footer-links-list" role="list">
+          <li>
+            <a href="mailto:tulashackathon@gmail.com" class="footer-link">
+              <Icon name="sparkle" size={14} color="var(--color-primary-pink)" />
+              <span>tulashackathon@gmail.com</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://discord.com" target="_blank" rel="noopener noreferrer" class="footer-link">
+              <Icon name="discord" size={14} />
+              <span>National Hacker Discord</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="footer-link">
+              <Icon name="github" size={14} />
+              <span>GitHub Starter Kits</span>
+            </a>
+          </li>
+          <li>
+            <a href="tel:+918077644887" class="footer-link">
+              <span>Coordinator: +91 80776 44887</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Event Logistics & Location -->
+      <div class="footer-nav-group">
+        <span class="footer-group-title">Event Logistics</span>
+        <div class="footer-logistics-info">
+          <div class="logistics-item">
+            <span class="type-label">Format:</span>
+            <span class="type-metadata">36-Hour Non-Stop Marathon (Sep 25-26)</span>
+          </div>
+          <div class="logistics-item">
+            <span class="type-label">Venue:</span>
+            <span class="type-metadata">Tula's University, Dhoolkot, PO Selaqui, Dehradun, Uttarakhand 248011</span>
+          </div>
+          <div class="logistics-item">
+            <span class="type-label">Organized By:</span>
+            <span class="type-metadata">Dept of CSE, Tula's University & ACM Chapter</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Copyright & Disclaimer -->
+    <div class="footer-bottom-row">
+      <p class="type-metadata footer-copyright">
+        &copy; {new Date().getFullYear()} {HACKATHON_CONFIG.name}. Organised by Department of CSE, Tula's University, Dehradun.
+      </p>
+
+      <div class="footer-legal-row">
+        <span class="type-metadata footer-disclaimer">
+          National Level Hackathon &bull; Tula's University, Dehradun &bull; Tula's ACM Student Chapter
+        </span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  if (typeof window !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const footerBow = document.getElementById('footer-animated-bow');
+      if (footerBow) {
+        gsap.from(footerBow, {
+          scrollTrigger: {
+            trigger: '.site-footer',
+            start: 'top 85%',
+            toggleActions: 'play none none none',
+          },
+          scale: 0,
+          rotation: -45,
+          duration: 0.8,
+          ease: 'back.out(2)',
+        });
+      }
+    });
+  }
+</script>
+
+<style>
+  .site-footer {
+    position: relative;
+    background-color: #FAF7F4;
+    border-top: 1.5px solid var(--color-border);
+    padding-top: clamp(3rem, 6vw, 5rem);
+    padding-bottom: clamp(2rem, 4vw, 3.5rem);
+    overflow: hidden;
+  }
+
+  .footer-cloud-horizon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  .footer-cloud-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .footer-inner-container {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2rem, 4vw, 3.5rem);
+  }
+
+  /* Top Row */
+  .footer-top-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  @media (min-width: 768px) {
+    .footer-top-row {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  .footer-brand-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .footer-logo-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    text-decoration: none;
+    color: var(--color-text-dark);
+  }
+
+  .footer-bow-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .footer-brand-title {
+    font-family: var(--font-family-display);
+    font-size: 1.15rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+
+  .footer-brand-tagline {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    max-width: 480px;
+  }
+
+  .footer-register-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.35rem;
+    background-color: var(--color-primary-pink);
+    color: #ffffff;
+    font-family: var(--font-family-display);
+    font-size: 0.9rem;
+    font-weight: 800;
+    text-decoration: none;
+    border: 1.5px solid var(--color-border-strong);
+    border-radius: var(--radius-pill);
+    box-shadow: 0 3px 0 var(--color-border-strong);
+    transition: transform var(--duration-fast) var(--ease-spring), background-color var(--duration-fast) var(--ease-standard);
+  }
+
+  .footer-register-pill:hover {
+    transform: translateY(-2px);
+    background-color: #E6002B;
+  }
+
+  /* Middle Navigation Grid */
+  .footer-links-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  @media (min-width: 640px) {
+    .footer-links-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 960px) {
+    .footer-links-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .footer-nav-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .footer-group-title {
+    font-family: var(--font-family-display);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-dark);
+  }
+
+  .footer-links-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+
+  .footer-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color var(--duration-fast) var(--ease-standard), transform var(--duration-fast) var(--ease-standard);
+  }
+
+  .footer-link:hover {
+    color: var(--color-primary-pink);
+    transform: translateX(3px);
+  }
+
+  .footer-logistics-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .logistics-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  /* Bottom Row */
+  .footer-bottom-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  @media (min-width: 768px) {
+    .footer-bottom-row {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  .footer-copyright {
+    color: var(--color-text-muted);
+    font-size: 0.825rem;
+  }
+
+  .footer-disclaimer {
+    color: var(--color-text-muted);
+    font-size: 0.775rem;
+    opacity: 0.8;
+  }
+</style>

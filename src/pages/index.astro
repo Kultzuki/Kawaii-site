@@ -1,0 +1,45 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import TopVideoHero from '@/components/hero/TopVideoHero.astro';
+import HeroScene from '@/components/hero/HeroScene.astro';
+import StorySection from '@/components/story/StorySection.astro';
+import AboutOverview from '@/components/sections/AboutOverview.astro';
+import TracksSection from '@/components/sections/TracksSection.astro';
+import HowItWorksSection from '@/components/sections/HowItWorksSection.astro';
+import TimelineSection from '@/components/sections/TimelineSection.astro';
+import PrizesSection from '@/components/sections/PrizesSection.astro';
+import FAQSection from '@/components/sections/FAQSection.astro';
+import RegistrationSection from '@/components/sections/RegistrationSection.astro';
+---
+
+<BaseLayout>
+  <!-- 0. Top Cinematic Video Stage (For_Hero.mp4) -->
+  <TopVideoHero />
+
+  <!-- 1. 2.5D Animated Hero Centerpiece ("Code with Cute. Build the Future.") -->
+  <HeroScene />
+
+  <!-- 2. Scroll-Driven Illustrated Story Journey (Act 1 -> Act 2 -> Act 3) -->
+  <StorySection />
+
+  <!-- 3. Core Information: About, Quick Facts, Eligibility, Team Size -->
+  <AboutOverview />
+
+  <!-- 4. Challenge Tracks & Themes -->
+  <TracksSection />
+
+  <!-- 5. How It Works: 4-Step Participation Roadmap -->
+  <HowItWorksSection />
+
+  <!-- 6. Event Schedule & Key Milestones Timeline -->
+  <TimelineSection />
+
+  <!-- 7. ₹7 Lakhs+ Prize Pool, Pedestal, Special Awards & Incubation -->
+  <PrizesSection />
+
+  <!-- 8. Interactive FAQ Accordion -->
+  <FAQSection />
+
+  <!-- 9. Interactive Registration Portal & Final Celebration Destination -->
+  <RegistrationSection />
+</BaseLayout>

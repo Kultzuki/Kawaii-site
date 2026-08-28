@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 90" fill="none">
+  <!-- Iconic Red Bow Motif -->
+  <g id="red-bow">
+    <!-- Left Loop -->
+    <path d="M52 45C32 20 8 26 5 44C2 62 25 70 48 54L52 45Z" fill="#E6002B" stroke="#121316" stroke-width="4" stroke-linejoin="round"/>
+    <ellipse cx="24" cy="38" rx="8" ry="4" transform="rotate(-20 24 38)" fill="#FF3366" opacity="0.6"/>
+    
+    <!-- Right Loop -->
+    <path d="M68 45C88 20 112 26 115 44C118 62 95 70 72 54L68 45Z" fill="#E6002B" stroke="#121316" stroke-width="4" stroke-linejoin="round"/>
+    <ellipse cx="96" cy="38" rx="8" ry="4" transform="rotate(20 96 38)" fill="#FF3366" opacity="0.6"/>
+    
+    <!-- Center Knot -->
+    <ellipse cx="60" cy="46" rx="14" ry="16" fill="#E6002B" stroke="#121316" stroke-width="4"/>
+    <ellipse cx="56" cy="42" rx="4" ry="6" fill="#FFFFFF" opacity="0.4"/>
+  </g>
+</svg>

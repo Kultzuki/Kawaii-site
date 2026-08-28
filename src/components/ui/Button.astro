@@ -1,0 +1,52 @@
+---
+interface Props {
+  variant?: 'primary' | 'secondary' | 'red' | 'blue';
+  size?: 'sm' | 'md' | 'lg';
+  href?: string;
+  type?: 'button' | 'submit' | 'reset';
+  class?: string;
+  target?: string;
+  rel?: string;
+  id?: string;
+}
+
+const {
+  variant = 'primary',
+  size = 'md',
+  href,
+  type = 'button',
+  class: className = '',
+  target,
+  rel,
+  id,
+  ...rest
+} = Astro.props;
+
+const variantClass = `btn-${variant}`;
+const sizeClass = size === 'sm' ? 'btn-sm' : size === 'lg' ? 'btn-lg' : '';
+const combinedClasses = `btn ${variantClass} ${sizeClass} ${className}`.trim();
+---
+
+{
+  href ? (
+    <a href={href} class={combinedClasses} target={target} rel={rel} id={id} {...rest}>
+      <slot />
+    </a>
+  ) : (
+    <button type={type} class={combinedClasses} id={id} {...rest}>
+      <slot />
+    </button>
+  )
+}
+
+<style>
+  .btn-sm {
+    padding: 0.55rem 1.15rem;
+    font-size: 0.85rem;
+  }
+
+  .btn-lg {
+    padding: 1rem 2.25rem;
+    font-size: 1.1rem;
+  }
+</style>

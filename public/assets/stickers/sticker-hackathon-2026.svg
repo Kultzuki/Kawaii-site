@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 80" fill="none">
+  <!-- Sticker: Event Date & Location -->
+  <g id="sticker-event">
+    <rect x="6" y="6" width="148" height="68" rx="14" fill="#EEF4FF" stroke="#121316" stroke-width="4"/>
+    <text x="18" y="32" font-family="system-ui, sans-serif" font-weight="900" font-size="11" fill="#2264E5">OCTOBER 15-17</text>
+    <text x="18" y="52" font-family="system-ui, sans-serif" font-weight="800" font-size="14" fill="#121316">TOKYO + HYBRID</text>
+  </g>
+</svg>

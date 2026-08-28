@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <!-- Kawaii Heart Motif -->
+  <path d="M50 88C50 88 10 60 10 32C10 16 24 8 36 8C44 8 48 14 50 18C52 14 56 8 64 8C76 8 90 16 90 32C90 60 50 88 50 88Z" fill="#FF3366" stroke="#121316" stroke-width="4" stroke-linejoin="round"/>
+  <ellipse cx="32" cy="24" rx="8" ry="4" transform="rotate(-30 32 24)" fill="#FFFFFF" opacity="0.4"/>
+</svg>

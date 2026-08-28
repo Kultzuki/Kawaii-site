@@ -1,0 +1,265 @@
+---
+import { TIMELINE_DATA } from '@/data/timeline';
+import Pill from '@/components/ui/Pill.astro';
+import Icon from '@/components/ui/Icon.astro';
+---
+
+<section id="schedule" class="section section-timeline" aria-label="Hackathon Timeline and Schedule">
+  <div class="container">
+    <div class="section-heading-wrap" data-reveal="fade">
+      <Pill variant="cream">
+        <Icon name="calendar" size={14} color="var(--color-primary-pink)" />
+        <span>Event Schedule & Milestones</span>
+      </Pill>
+      <h2 class="type-section-title section-main-title">
+        The 3-Day <span class="text-pink">Hacking Roadmap</span>
+      </h2>
+      <p class="type-body-lead section-intro-text">
+        All live streams and submissions are globally synchronized. Check key milestones below.
+      </p>
+    </div>
+
+    <!-- Timeline Graphical List -->
+    <div class="timeline-visual-wrapper" data-reveal="slide">
+      <div class="timeline-central-spine" aria-hidden="true"></div>
+
+      <div class="timeline-milestones-list" role="list">
+        {TIMELINE_DATA.map((milestone, index) => (
+          <div class={`timeline-entry ${milestone.isKeyMilestone ? 'entry-key' : ''} ${index % 2 === 0 ? 'entry-left' : 'entry-right'}`} role="listitem">
+            <!-- Timeline Center Node -->
+            <div class="timeline-node" aria-hidden="true">
+              <div class="node-dot"></div>
+            </div>
+
+            <!-- Milestone Card -->
+            <div class="milestone-card">
+              <div class="milestone-header">
+                <span class="type-label milestone-day">{milestone.day}</span>
+                <Pill variant={milestone.tagVariant}>
+                  <span>{milestone.tag}</span>
+                </Pill>
+              </div>
+
+              <div class="milestone-meta-row">
+                <span class="type-metadata milestone-date">{milestone.date}</span>
+                <span class="meta-dot">&bull;</span>
+                <span class="type-metadata milestone-time">{milestone.time}</span>
+              </div>
+
+              <h3 class="type-subheading milestone-title">{milestone.title}</h3>
+              <p class="type-body milestone-desc">{milestone.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-timeline {
+    background-color: var(--color-surface);
+    border-top: 1.5px solid var(--color-border);
+    border-bottom: 1.5px solid var(--color-border);
+  }
+
+  .section-heading-wrap {
+    max-width: 780px;
+    margin: 0 auto var(--space-3xl);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xs);
+  }
+
+  .section-main-title {
+    margin-top: 0.5rem;
+  }
+
+  .section-intro-text {
+    max-width: 640px;
+    margin-top: var(--space-xs);
+  }
+
+  /* Timeline Graphic Structure */
+  .timeline-visual-wrapper {
+    position: relative;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 1rem 0;
+  }
+
+  .timeline-central-spine {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 14px;
+    width: 3px;
+    background: repeating-linear-gradient(
+      180deg,
+      var(--color-primary-pink) 0px,
+      var(--color-primary-pink) 8px,
+      transparent 8px,
+      transparent 14px
+    );
+    opacity: 0.4;
+  }
+
+  @media (min-width: 768px) {
+    .timeline-central-spine {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  .timeline-milestones-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .timeline-entry {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    padding-left: 2.75rem;
+  }
+
+  @media (min-width: 768px) {
+    .timeline-entry {
+      padding-left: 0;
+      width: 50%;
+    }
+
+    .entry-left {
+      margin-right: auto;
+      padding-right: 3rem;
+      text-align: right;
+    }
+
+    .entry-left .milestone-header,
+    .entry-left .milestone-meta-row {
+      justify-content: flex-end;
+    }
+
+    .entry-right {
+      margin-left: auto;
+      padding-left: 3rem;
+      text-align: left;
+    }
+
+    .entry-right .milestone-header,
+    .entry-right .milestone-meta-row {
+      justify-content: flex-start;
+    }
+  }
+
+  .timeline-node {
+    position: absolute;
+    left: 6px;
+    top: 18px;
+    width: 18px;
+    height: 18px;
+    border-radius: var(--radius-pill);
+    background-color: var(--color-surface);
+    border: 2px solid var(--color-primary-pink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+  }
+
+  .node-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: var(--radius-pill);
+    background-color: var(--color-primary-pink);
+  }
+
+  .entry-key .timeline-node {
+    border-color: var(--color-red);
+    box-shadow: 0 0 12px rgba(230, 0, 43, 0.4);
+  }
+
+  .entry-key .node-dot {
+    background-color: var(--color-red);
+  }
+
+  @media (min-width: 768px) {
+    .timeline-node {
+      width: 20px;
+      height: 20px;
+    }
+
+    .node-dot {
+      width: 8px;
+      height: 8px;
+    }
+
+    .entry-left .timeline-node {
+      left: auto;
+      right: -10px;
+    }
+
+    .entry-right .timeline-node {
+      left: -10px;
+    }
+  }
+
+  /* Milestone Card */
+  .milestone-card {
+    background-color: var(--color-bg);
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: clamp(1.15rem, 3vw, 1.75rem);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    box-shadow: var(--shadow-subtle);
+    width: 100%;
+    transition: transform var(--duration-fast) var(--ease-spring), border-color var(--duration-fast) var(--ease-standard);
+  }
+
+  .milestone-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--color-text-dark);
+  }
+
+  .entry-key .milestone-card {
+    border-color: #FFCCD7;
+    background-color: #FFF5F8;
+  }
+
+  .milestone-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.4rem;
+  }
+
+  .milestone-day {
+    font-size: 0.75rem;
+    color: var(--color-primary-pink);
+  }
+
+  .milestone-meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.8rem;
+  }
+
+  .milestone-title {
+    font-size: clamp(1.1rem, 2.5vw, 1.25rem);
+    margin-top: 0.2rem;
+    line-height: 1.25;
+  }
+
+  .milestone-desc {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+  }
+</style>

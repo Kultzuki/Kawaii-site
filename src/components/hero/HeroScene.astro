@@ -1,0 +1,757 @@
+---
+import { HACKATHON_CONFIG } from '@/data/hackathon';
+import Button from '@/components/ui/Button.astro';
+import Pill from '@/components/ui/Pill.astro';
+import Sticker from '@/components/ui/Sticker.astro';
+import Icon from '@/components/ui/Icon.astro';
+---
+
+<section class="hero-scene-section" id="hero-scene" aria-label="Hackathon Hero Presentation">
+  <!-- ------------------------------------------------------------------------
+       2.5D Background Atmosphere & Environmental Planes
+       ------------------------------------------------------------------------ -->
+  <div class="scene-stage" aria-hidden="true">
+    <!-- Sky & Polka Texture -->
+    <div class="layer layer-sky" data-layer-sky>
+      <div class="sky-gradient"></div>
+      <div class="sky-texture"></div>
+      <div class="sun-glow"></div>
+    </div>
+
+    <!-- Distant Floating Clouds -->
+    <div class="layer layer-clouds" data-layer-clouds-distant>
+      <img
+        src="/assets/environments/cloud-fluffy-small.svg"
+        alt=""
+        class="cloud-item cloud-1"
+        width="130"
+        height="75"
+        loading="eager"
+      />
+      <img
+        src="/assets/environments/cloud-fluffy-large.svg"
+        alt=""
+        class="cloud-item cloud-2"
+        width="220"
+        height="120"
+        loading="eager"
+      />
+    </div>
+
+    <!-- Distant Green Landscape Hills -->
+    <div class="layer layer-hills" data-layer-hills>
+      <img
+        src="/assets/environments/hill-landscape.svg"
+        alt=""
+        class="landscape-hills-img"
+        width="1440"
+        height="240"
+        loading="eager"
+      />
+    </div>
+  </div>
+
+  <!-- ------------------------------------------------------------------------
+       Hero Content Grid (Editorial Text on Left, Visual on Right)
+       ------------------------------------------------------------------------ -->
+  <div class="container hero-container">
+    <div class="hero-grid">
+      <!-- Left Column: Editorial & Action -->
+      <div class="hero-text-col" data-layer-content>
+        <!-- Dedicated Mobile Focal Character Slot (Visible only on mobile screens) -->
+        <div class="hero-mobile-character-wrap" aria-hidden="true">
+          <div class="mobile-char-shadow"></div>
+          <img
+            src="/characters/image_1.webp"
+            alt=""
+            width="150"
+            height="180"
+            loading="eager"
+            class="mobile-char-img"
+          />
+          <div class="mobile-bow-accent">
+            <Icon name="bow" size={24} color="var(--color-red)" />
+          </div>
+        </div>
+
+        <!-- Kicker Pill -->
+        <div class="hero-kicker-wrap">
+          <Pill variant="pink">
+            <Icon name="sparkle" size={14} color="var(--color-primary-pink)" />
+            <span>National Level Hackathon &bull; September 25 - 26 &bull; 36-Hr Sprint &bull; Tula's University</span>
+          </Pill>
+        </div>
+
+        <!-- Main Headline -->
+        <h1 class="type-hero-title hero-title">
+          Code with <span class="text-pink text-emphasis">Cute.</span><br />
+          Build the <span class="title-underline">Future.</span>
+        </h1>
+
+        <!-- Subtitle / Value Proposition in Glass Card -->
+        <p class="type-body-lead hero-tagline">
+          India's flagship 36-hour national hackathon by Tula's University, Dehradun. 5 power tracks with ₹7 Lakhs+ prize pool, featuring ₹65K, ₹45K, and ₹35K cash prizes plus ₹1.5 Lakh incubation grants!
+        </p>
+
+        <!-- Event Metadata Pill Bar -->
+        <div class="hero-meta-bar">
+          <div class="meta-item">
+            <Icon name="calendar" size={16} color="var(--color-primary-pink)" />
+            <span class="type-metadata">Sep 25 - 26, 2026 (36-Hr)</span>
+          </div>
+          <span class="meta-sep" aria-hidden="true">&bull;</span>
+          <div class="meta-item">
+            <Icon name="map-pin" size={16} color="var(--color-blue)" />
+            <span class="type-metadata">Tula's University, Dehradun</span>
+          </div>
+          <span class="meta-sep" aria-hidden="true">&bull;</span>
+          <div class="meta-item">
+            <Icon name="trophy" size={16} color="#946800" />
+            <span class="type-metadata">₹7,00,000+ Prize Pool</span>
+          </div>
+        </div>
+
+        <!-- Primary Actions -->
+        <div class="hero-cta-group" data-layer-cta>
+          <Button href={HACKATHON_CONFIG.registrationUrl} variant="primary" size="lg" id="btn-hero-main-register" class="btn-mobile-block">
+            <span>Register Team (2-4 Builders)</span>
+            <Icon name="sparkle" size={18} color="#FFFFFF" />
+          </Button>
+          <Button href="#prizes" variant="secondary" size="lg" class="btn-mobile-block">
+            <span>View ₹7 Lakhs Prizes</span>
+            <Icon name="arrow-right" size={16} color="var(--color-text-dark)" />
+          </Button>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="hero-scroll-indicator">
+          <a href="#about" class="scroll-link" aria-label="Scroll down to learn more">
+            <span class="scroll-icon-wrap">
+              <span class="scroll-dot"></span>
+            </span>
+            <span class="type-metadata">Scroll to explore details</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Column: Visual 2.5D Focal Stage (Desktop Only) -->
+      <div class="hero-visual-col" data-layer-visual>
+        <div class="visual-canvas">
+          <!-- Background Sunburst Pattern -->
+          <div class="visual-backdrop-glow"></div>
+
+          <!-- Midground House & Garden Elements -->
+          <div class="visual-house-element" data-layer-cottage>
+            <img
+              src="/assets/environments/kawaii-house.svg"
+              alt=""
+              width="140"
+              height="130"
+              loading="eager"
+            />
+          </div>
+
+          <!-- Main Hello Kitty Character Focal Artwork -->
+          <div class="visual-character-stage" data-layer-character>
+            <div class="character-shadow"></div>
+            <img
+              src="/characters/image_1.webp"
+              alt="Hello Kitty Hackathon Ambassador Focal Artwork"
+              class="hero-kitty-img"
+              width="340"
+              height="410"
+              loading="eager"
+            />
+            <!-- Animated Floating Bow Badge -->
+            <div class="kitty-bow-floater">
+              <img
+                src="/assets/decorations/red-bow.svg"
+                alt=""
+                width="64"
+                height="48"
+                loading="eager"
+              />
+            </div>
+          </div>
+
+          <!-- Floating Stickers safely arranged around the character -->
+          <div class="floating-stickers-layer" data-layer-stickers>
+            <div class="sticker-anchor sticker-top-left">
+              <Sticker variant="pink" rotation="neg-3">
+                <Icon name="bow" size={15} color="var(--color-red)" />
+                <span>Tula's University CSE</span>
+              </Sticker>
+            </div>
+
+            <div class="sticker-anchor sticker-top-right">
+              <Sticker variant="yellow" rotation="pos-2">
+                <Icon name="sparkle" size={15} color="#946800" />
+                <span>₹7,00,000+ Prize Pool</span>
+              </Sticker>
+            </div>
+
+            <div class="sticker-anchor sticker-bottom-left">
+              <Sticker variant="blue" rotation="neg-2">
+                <Icon name="trophy" size={15} color="var(--color-blue)" />
+                <span>1st: ₹65K + ₹1.5L Incubation</span>
+              </Sticker>
+            </div>
+
+            <div class="sticker-anchor sticker-bottom-right">
+              <Sticker variant="cream" rotation="pos-3">
+                <Icon name="terminal" size={15} color="var(--color-text-dark)" />
+                <span>36-Hr National Sprint</span>
+              </Sticker>
+            </div>
+          </div>
+
+          <!-- Kawaii Lore Accents -->
+          <div class="floating-decorations-layer" data-layer-decorations>
+            <div class="deco-anchor deco-apple">
+              <img src="/assets/decorations/cute-apple.svg" alt="" width="44" height="48" loading="eager" />
+            </div>
+            <div class="deco-anchor deco-strawberry">
+              <img src="/assets/decorations/cute-strawberry.svg" alt="" width="40" height="44" loading="eager" />
+            </div>
+            <div class="deco-anchor deco-flower">
+              <img src="/assets/decorations/kawaii-flower.svg" alt="" width="36" height="36" loading="eager" />
+            </div>
+            <div class="deco-anchor deco-sparkle">
+              <img src="/assets/decorations/sparkle-star.svg" alt="" width="28" height="28" loading="eager" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { initHeroScene25D } from '@/animations/hero';
+  import { initMagnetic } from '@/animations/interactions';
+
+  const initHero = () => {
+    initHeroScene25D('#hero-scene', {
+      sky: '[data-layer-sky]',
+      cloudsDistant: '[data-layer-clouds-distant] .cloud-item',
+      hills: '[data-layer-hills]',
+      cottage: '[data-layer-cottage]',
+      character: '[data-layer-character]',
+      stickers: '[data-layer-stickers] .sticker-anchor',
+      decorations: '[data-layer-decorations] .deco-anchor',
+      content: '[data-layer-content]',
+      cta: '[data-layer-cta]',
+    });
+
+    initMagnetic('#btn-hero-main-register', { strength: 0.3 });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHero);
+  } else {
+    initHero();
+  }
+</script>
+
+<style>
+  /* --------------------------------------------------------------------------
+     Hero Section Container
+     -------------------------------------------------------------------------- */
+  .hero-scene-section {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding-top: clamp(5.5rem, 10vw, 7.5rem);
+    padding-bottom: clamp(3rem, 6vw, 5rem);
+    background-color: var(--color-bg);
+  }
+
+  /* --------------------------------------------------------------------------
+     Atmospheric Background
+     -------------------------------------------------------------------------- */
+  .scene-stage {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .layer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .layer-sky {
+    z-index: 1;
+  }
+
+  .sky-gradient {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 15%, #FFF0F5 0%, #FAF7F4 70%);
+  }
+
+  .sky-texture {
+    position: absolute;
+    inset: 0;
+    background-image: url('/assets/textures/subtle-dots-pattern.svg');
+    background-repeat: repeat;
+    opacity: 0.35;
+  }
+
+  .sun-glow {
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(255, 200, 55, 0.15) 0%, rgba(255, 51, 102, 0.05) 50%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(50px);
+  }
+
+  .layer-clouds {
+    z-index: 2;
+  }
+
+  .cloud-item {
+    position: absolute;
+    opacity: 0.85;
+    filter: drop-shadow(0 4px 12px rgba(20, 20, 23, 0.04));
+  }
+
+  .cloud-1 {
+    top: 12%;
+    left: 4%;
+  }
+
+  .cloud-2 {
+    top: 8%;
+    right: 5%;
+  }
+
+  .layer-hills {
+    z-index: 3;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .landscape-hills-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: bottom;
+    opacity: 0.22;
+    transform: translateY(18%);
+  }
+
+  /* --------------------------------------------------------------------------
+     Hero Grid Layout
+     -------------------------------------------------------------------------- */
+  .hero-container {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    align-items: center;
+    width: 100%;
+  }
+
+  @media (min-width: 960px) {
+    .hero-grid {
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 3rem;
+    }
+  }
+
+  /* --------------------------------------------------------------------------
+     Left Column: Typography & Actions
+     -------------------------------------------------------------------------- */
+  .hero-text-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: clamp(0.75rem, 2vw, 1.25rem);
+    text-align: left;
+  }
+
+  @media (max-width: 959px) {
+    .hero-text-col {
+      align-items: center;
+      text-align: center;
+      margin: 0 auto;
+      max-width: 640px;
+    }
+  }
+
+  .hero-mobile-character-wrap {
+    display: none;
+    position: relative;
+    width: 140px;
+    margin: 0 auto 0.75rem;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @media (max-width: 959px) {
+    .hero-mobile-character-wrap {
+      display: flex;
+    }
+  }
+
+  .mobile-char-shadow {
+    position: absolute;
+    bottom: -4px;
+    width: 80%;
+    height: 14px;
+    background: radial-gradient(ellipse at center, rgba(20, 20, 23, 0.16) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: 0;
+  }
+
+  .mobile-char-img {
+    width: auto;
+    max-width: 130px;
+    max-height: 150px;
+    height: auto;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+    display: block;
+    position: relative;
+    z-index: 1;
+  }
+
+  .mobile-bow-accent {
+    position: absolute;
+    top: -8px;
+    right: 2px;
+    z-index: 2;
+    animation: bow-wiggle 3s ease-in-out infinite alternate;
+  }
+
+  @keyframes bow-wiggle {
+    0% { transform: translateY(0) rotate(-6deg); }
+    100% { transform: translateY(-6px) rotate(6deg); }
+  }
+
+  .hero-kicker-wrap {
+    margin-bottom: 0.15rem;
+  }
+
+  .hero-title {
+    font-size: clamp(2.15rem, 5.2vw + 0.5rem, 4.5rem);
+    letter-spacing: -0.035em;
+    line-height: 1.06;
+  }
+
+  .text-emphasis {
+    position: relative;
+    display: inline-block;
+  }
+
+  .title-underline {
+    position: relative;
+    display: inline-block;
+  }
+
+  .title-underline::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background-color: var(--color-yellow);
+    z-index: -1;
+    border-radius: var(--radius-pill);
+    opacity: 0.85;
+  }
+
+  /* Subtitle */
+  .hero-tagline {
+    max-width: 540px;
+    color: var(--color-text-body);
+  }
+
+  /* Event Metadata Pill Bar */
+  .hero-meta-bar {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.5rem 1.1rem;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-pill);
+    box-shadow: var(--shadow-subtle);
+  }
+
+  @media (max-width: 959px) {
+    .hero-meta-bar {
+      justify-content: center;
+    }
+  }
+
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .meta-sep {
+    color: var(--color-border-strong);
+    opacity: 0.25;
+  }
+
+  .hero-cta-group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.85rem;
+    margin-top: 0.5rem;
+    width: 100%;
+  }
+
+  @media (max-width: 959px) {
+    .hero-cta-group {
+      justify-content: center;
+    }
+  }
+
+  .hero-scroll-indicator {
+    display: flex;
+    align-items: center;
+    margin-top: clamp(0.5rem, 2vw, 1.5rem);
+  }
+
+  .scroll-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    text-decoration: none;
+    color: var(--color-text-muted);
+    transition: color var(--duration-fast) var(--ease-standard);
+  }
+
+  .scroll-link:hover {
+    color: var(--color-primary-pink);
+  }
+
+  .scroll-icon-wrap {
+    width: 18px;
+    height: 28px;
+    border: 2px solid currentColor;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    padding-top: 3px;
+  }
+
+  .scroll-dot {
+    width: 4px;
+    height: 5px;
+    background-color: currentColor;
+    border-radius: 2px;
+    animation: scroll-dot-anim 1.8s ease-in-out infinite;
+  }
+
+  @keyframes scroll-dot-anim {
+    0% { transform: translateY(0); opacity: 1; }
+    60% { transform: translateY(7px); opacity: 0.2; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+
+  /* --------------------------------------------------------------------------
+     Right Column: Visual 2.5D Stage (Desktop)
+     -------------------------------------------------------------------------- */
+  .hero-visual-col {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  @media (min-width: 960px) {
+    .hero-visual-col {
+      display: flex;
+    }
+  }
+
+  .visual-canvas {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    height: 480px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .visual-backdrop-glow {
+    position: absolute;
+    width: 340px;
+    height: 340px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 51, 102, 0.13) 0%, rgba(255, 200, 55, 0.1) 60%, transparent 75%);
+    filter: blur(32px);
+    z-index: 1;
+  }
+
+  .visual-house-element {
+    position: absolute;
+    bottom: 8%;
+    left: -20px;
+    z-index: 2;
+    filter: drop-shadow(0 8px 16px rgba(20, 20, 23, 0.08));
+  }
+
+  .visual-character-stage {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .character-shadow {
+    position: absolute;
+    bottom: -6px;
+    width: 65%;
+    max-width: 190px;
+    height: 20px;
+    background: radial-gradient(ellipse at center, rgba(20, 20, 23, 0.18) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: -1;
+  }
+
+  .hero-kitty-img {
+    width: auto;
+    max-width: 290px;
+    max-height: 350px;
+    height: auto;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+    display: block;
+    position: relative;
+    z-index: 1;
+  }
+
+  .kitty-bow-floater {
+    position: absolute;
+    top: 8px;
+    right: 18px;
+    z-index: 4;
+    animation: bow-wiggle 2.8s ease-in-out infinite alternate;
+  }
+
+  /* --------------------------------------------------------------------------
+     Floating Stickers
+     -------------------------------------------------------------------------- */
+  .floating-stickers-layer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  .sticker-anchor {
+    position: absolute;
+    pointer-events: auto;
+  }
+
+  .sticker-top-left {
+    top: 4%;
+    left: -22px;
+  }
+
+  .sticker-top-right {
+    top: 6%;
+    right: -15px;
+  }
+
+  .sticker-bottom-left {
+    bottom: 6%;
+    left: -25px;
+  }
+
+  .sticker-bottom-right {
+    bottom: 10%;
+    right: -15px;
+  }
+
+  /* --------------------------------------------------------------------------
+     Kawaii Floating Decorations
+     -------------------------------------------------------------------------- */
+  .floating-decorations-layer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 6;
+  }
+
+  .deco-anchor {
+    position: absolute;
+    filter: drop-shadow(0 6px 12px rgba(20, 20, 23, 0.08));
+  }
+
+  .deco-apple {
+    top: 36%;
+    right: -14px;
+  }
+
+  .deco-strawberry {
+    bottom: 22%;
+    left: 4px;
+  }
+
+  .deco-flower {
+    top: 20%;
+    left: 6px;
+  }
+
+  .deco-sparkle {
+    bottom: 26%;
+    right: 20px;
+  }
+
+  /* --------------------------------------------------------------------------
+     Mobile Responsive Optimizations
+     -------------------------------------------------------------------------- */
+  @media (max-width: 959px) {
+    .hero-scene-section {
+      min-height: auto;
+      padding-top: 6rem;
+      padding-bottom: 3.5rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 8vw, 3rem);
+    }
+
+    .hero-tagline {
+      font-size: 0.95rem;
+    }
+
+    .hero-meta-bar {
+      font-size: 0.8rem;
+      padding: 0.45rem 0.85rem;
+      gap: 0.4rem;
+    }
+  }
+</style>

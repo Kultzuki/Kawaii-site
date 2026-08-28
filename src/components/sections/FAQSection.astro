@@ -1,0 +1,314 @@
+---
+import { FAQ_ITEMS } from '@/data/faq';
+import Pill from '@/components/ui/Pill.astro';
+import Button from '@/components/ui/Button.astro';
+import Icon from '@/components/ui/Icon.astro';
+---
+
+<section id="faq" class="section section-faq" aria-label="Frequently Asked Questions">
+  <div class="container container-medium">
+    <!-- Header -->
+    <div class="section-heading-wrap" data-reveal="fade">
+      <Pill variant="cream">
+        <Icon name="sparkle" size={14} color="var(--color-primary-pink)" />
+        <span>Got Questions?</span>
+      </Pill>
+      <h2 class="type-section-title section-main-title">
+        Frequently Asked <span class="text-pink">Questions</span>
+      </h2>
+      <p class="type-body-lead section-intro-text">
+        Everything you need to know about participating, teams, tracks, and prizes.
+      </p>
+    </div>
+
+    <!-- FAQ Accordion List -->
+    <div class="faq-accordion-list" role="presentation" data-reveal="slide">
+      {FAQ_ITEMS.map((item) => (
+        <div class="faq-item" data-faq-item>
+          <h3>
+            <button
+              type="button"
+              class="faq-question-btn"
+              aria-expanded="false"
+              aria-controls={`faq-answer-${item.id}`}
+              id={`faq-btn-${item.id}`}
+              data-faq-trigger
+            >
+              <span class="faq-question-text">{item.question}</span>
+              <span class="faq-icon-indicator" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19" class="line-v" />
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+              </span>
+            </button>
+          </h3>
+
+          <div
+            id={`faq-answer-${item.id}`}
+            class="faq-answer-panel"
+            role="region"
+            aria-labelledby={`faq-btn-${item.id}`}
+            hidden
+            data-faq-panel
+          >
+            <div class="faq-answer-inner">
+              <p class="type-body faq-answer-text">{item.answer}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Direct Support Help Card -->
+    <div class="faq-help-card" data-reveal="fade">
+      <div class="help-card-content">
+        <div class="help-icon-circle">
+          <Icon name="bow" size={28} color="var(--color-red)" />
+        </div>
+        <div class="help-text">
+          <h4 class="type-subheading help-title">Still have questions?</h4>
+          <p class="type-body help-desc">Our team and mentor community are ready to help 24/7 on Discord or via email.</p>
+        </div>
+      </div>
+      <div class="help-actions">
+        <Button href="mailto:hello@hackthefuture.kawaii" variant="secondary" size="md">
+          <span>Email Organizers</span>
+        </Button>
+        <Button href="https://discord.com" variant="primary" size="md">
+          <Icon name="discord" size={16} color="#FFFFFF" />
+          <span>Join Discord Server</span>
+        </Button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const faqItems = document.querySelectorAll<HTMLElement>('[data-faq-item]');
+
+    faqItems.forEach((item) => {
+      const trigger = item.querySelector<HTMLButtonElement>('[data-faq-trigger]');
+      const panel = item.querySelector<HTMLElement>('[data-faq-panel]');
+      if (!trigger || !panel) return;
+
+      trigger.addEventListener('click', () => {
+        const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+
+        // Toggle state
+        trigger.setAttribute('aria-expanded', String(!isExpanded));
+        item.classList.toggle('is-open', !isExpanded);
+
+        if (!isExpanded) {
+          panel.removeAttribute('hidden');
+        } else {
+          // Allow smooth transition before adding hidden
+          setTimeout(() => {
+            if (trigger.getAttribute('aria-expanded') === 'false') {
+              panel.setAttribute('hidden', '');
+            }
+          }, 240);
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  .section-faq {
+    background-color: var(--color-surface);
+    border-top: 1.5px solid var(--color-border);
+    border-bottom: 1.5px solid var(--color-border);
+  }
+
+  .section-heading-wrap {
+    max-width: 780px;
+    margin: 0 auto var(--space-3xl);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xs);
+  }
+
+  .section-main-title {
+    margin-top: 0.5rem;
+  }
+
+  .section-intro-text {
+    max-width: 640px;
+    margin-top: var(--space-xs);
+  }
+
+  /* FAQ Accordion List */
+  .faq-accordion-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    max-width: 820px;
+    margin: 0 auto var(--space-3xl);
+  }
+
+  .faq-item {
+    background-color: var(--color-bg);
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: border-color var(--duration-fast) var(--ease-standard), box-shadow var(--duration-fast) var(--ease-standard);
+  }
+
+  .faq-item:hover {
+    border-color: var(--color-text-dark);
+  }
+
+  .faq-item.is-open {
+    border-color: var(--color-primary-pink);
+    box-shadow: 0 4px 16px rgba(255, 51, 102, 0.08);
+  }
+
+  .faq-item h3 {
+    margin: 0;
+    padding: 0;
+  }
+
+  .faq-question-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    outline: none;
+  }
+
+  .faq-question-text {
+    font-family: var(--font-family-display);
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--color-text-dark);
+    line-height: 1.35;
+    transition: color var(--duration-fast) var(--ease-standard);
+  }
+
+  .faq-question-btn:hover .faq-question-text,
+  .faq-item.is-open .faq-question-text {
+    color: var(--color-primary-pink);
+  }
+
+  .faq-icon-indicator {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-pill);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--color-text-dark);
+    transition: transform var(--duration-fast) var(--ease-spring), background-color var(--duration-fast) var(--ease-standard);
+  }
+
+  .faq-item.is-open .faq-icon-indicator {
+    background-color: var(--color-primary-pink-subtle);
+    color: var(--color-primary-pink);
+    border-color: var(--color-primary-pink);
+  }
+
+  .faq-item.is-open .line-v {
+    opacity: 0;
+    transform: rotate(90deg);
+  }
+
+  .line-v {
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    transform-origin: center;
+  }
+
+  /* Smooth Grid Animation for Panel */
+  .faq-answer-panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .faq-item.is-open .faq-answer-panel {
+    grid-template-rows: 1fr;
+  }
+
+  .faq-answer-inner {
+    overflow: hidden;
+  }
+
+  .faq-answer-text {
+    padding: 0 1.5rem 1.25rem 1.5rem;
+    color: var(--color-text-body);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* Direct Help Card */
+  .faq-help-card {
+    background-color: var(--color-bg);
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: clamp(1.5rem, 3.5vw, 2.25rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: var(--shadow-subtle);
+  }
+
+  @media (min-width: 860px) {
+    .faq-help-card {
+      flex-direction: row;
+    }
+  }
+
+  .help-card-content {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  .help-icon-circle {
+    width: 52px;
+    height: 52px;
+    border-radius: var(--radius-pill);
+    background-color: #FFF0F2;
+    border: 1.5px solid #FFCCD7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .help-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .help-title {
+    font-size: 1.15rem;
+  }
+
+  .help-desc {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+  }
+
+  .help-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+  }
+</style>

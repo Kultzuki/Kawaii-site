@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <!-- Classic Kawaii 5-Petal Flower -->
+  <g id="flower">
+    <!-- Petals -->
+    <circle cx="50" cy="22" r="18" fill="#FFFFFF" stroke="#121316" stroke-width="4"/>
+    <circle cx="77" cy="41" r="18" fill="#FFFFFF" stroke="#121316" stroke-width="4"/>
+    <circle cx="66" cy="74" r="18" fill="#FFFFFF" stroke="#121316" stroke-width="4"/>
+    <circle cx="34" cy="74" r="18" fill="#FFFFFF" stroke="#121316" stroke-width="4"/>
+    <circle cx="23" cy="41" r="18" fill="#FFFFFF" stroke="#121316" stroke-width="4"/>
+    <!-- Center Center Core -->
+    <circle cx="50" cy="50" r="16" fill="#FFC837" stroke="#121316" stroke-width="4"/>
+    <circle cx="46" cy="46" r="4" fill="#FFFFFF" opacity="0.6"/>
+  </g>
+</svg>

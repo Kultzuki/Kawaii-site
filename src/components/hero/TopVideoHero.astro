@@ -1,0 +1,261 @@
+---
+import Pill from '@/components/ui/Pill.astro';
+import Icon from '@/components/ui/Icon.astro';
+---
+
+<!-- ==========================================================================
+     Top Cinematic Video Hero Section
+     Plays /video/For_Hero.mp4 full-bleed at the top of the page.
+     When the visitor scrolls down, it smoothly leads into the 2.5D Hero Scene.
+     ========================================================================== -->
+<section id="intro-hero" class="top-video-hero-section" aria-label="Cinematic Hackathon Video Preview">
+  <!-- Video Player Stage -->
+  <div class="top-video-container" data-video-stage>
+    <video
+      id="top-hero-video-player"
+      src="/video/For_Hero.mp4"
+      autoplay
+      muted
+      loop
+      playsinline
+      webkit-playsinline="true"
+      preload="auto"
+      class="top-hero-video"
+    ></video>
+
+    <!-- Subtle Vignette / Gradient Overlay -->
+    <div class="top-video-gradient-overlay"></div>
+  </div>
+
+  <!-- Foreground Floating Content / Scroll CTA -->
+  <div class="container top-video-content-wrap">
+    <!-- Top Kicker -->
+    <div class="top-video-kicker" data-reveal="fade">
+      <Pill variant="pink">
+        <Icon name="sparkle" size={14} color="var(--color-primary-pink)" />
+        <span>Tula's University &bull; National Level Hackathon 2026</span>
+      </Pill>
+    </div>
+
+    <!-- Center/Bottom Caption & Scroll Trigger -->
+    <div class="top-video-footer" data-reveal="slide">
+      <div class="caption-badge">
+        <Icon name="bow" size={22} color="var(--color-red)" />
+        <span class="caption-title">HACK THE FUTURE // 2026</span>
+      </div>
+
+      <p class="caption-tagline">
+        Phase 1: Online PPT Round &bull; Phase 2: 36-Hr In-Person Campus Sprint &bull; ₹7,00,000+ Prizes
+      </p>
+
+      <a href="#hero-scene" class="top-scroll-down-btn" id="btn-top-video-scroll" aria-label="Scroll down to hackathon details">
+        <span class="scroll-txt">Explore Hackathon</span>
+        <div class="scroll-pill-indicator">
+          <span class="scroll-dot"></span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  if (typeof window !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const initVideoHero = () => {
+      const section = document.getElementById('intro-hero');
+      const video = document.getElementById('top-hero-video-player') as HTMLVideoElement | null;
+
+      if (section && video) {
+        // Ensure video is playing
+        video.play().catch(() => {});
+
+        // Subtle scroll-driven zoom & gentle fade on video as user scrolls toward hero scene
+        gsap.to(video, {
+          scrollTrigger: {
+            trigger: section,
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 0.8,
+          },
+          scale: 1.06,
+          opacity: 0.88,
+          ease: 'none',
+        });
+      }
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initVideoHero);
+    } else {
+      initVideoHero();
+    }
+  }
+</script>
+
+<style>
+  /* --------------------------------------------------------------------------
+     Top Video Hero Section
+     -------------------------------------------------------------------------- */
+  .top-video-hero-section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    padding-top: clamp(5.5rem, 10vw, 7.5rem);
+    padding-bottom: clamp(2rem, 5vw, 3.5rem);
+    background-color: #FAF7F4;
+  }
+
+  /* Video Stage */
+  .top-video-container {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .top-hero-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+    transform: scale(1.02);
+  }
+
+  .top-video-gradient-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(250, 247, 244, 0.2) 0%,
+      rgba(255, 255, 255, 0.05) 35%,
+      rgba(250, 247, 244, 0.3) 70%,
+      rgba(250, 247, 244, 0.85) 100%
+    );
+    pointer-events: none;
+  }
+
+  /* Content Wrapper */
+  .top-video-content-wrap {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    gap: 2rem;
+  }
+
+  .top-video-kicker {
+    display: inline-flex;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: var(--radius-pill);
+  }
+
+  /* Footer & Scroll CTA */
+  .top-video-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.85rem;
+    max-width: 640px;
+  }
+
+  .caption-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.45rem 1.15rem;
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1.5px solid rgba(255, 255, 255, 0.95);
+    border-radius: var(--radius-pill);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(255, 51, 102, 0.06);
+  }
+
+  .caption-title {
+    font-family: var(--font-family-display);
+    font-size: clamp(0.85rem, 2.4vw, 1.05rem);
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    color: var(--color-text-dark);
+  }
+
+  .caption-tagline {
+    font-family: var(--font-family-display);
+    font-size: clamp(0.85rem, 2.2vw, 1rem);
+    font-weight: 600;
+    color: #2D272A;
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 0.4rem 0.9rem;
+    border-radius: var(--radius-pill);
+    border: 1px solid rgba(255, 255, 255, 0.85);
+  }
+
+  /* Scroll Button */
+  .top-scroll-down-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.6rem 1.35rem;
+    background-color: var(--color-primary-pink);
+    color: #FFFFFF;
+    font-family: var(--font-family-display);
+    font-size: 0.9rem;
+    font-weight: 800;
+    text-decoration: none;
+    border: 2px solid var(--color-border-strong);
+    border-radius: var(--radius-pill);
+    box-shadow: 0 3px 0 var(--color-border-strong);
+    transition: transform var(--duration-fast) var(--ease-spring), background-color var(--duration-fast) var(--ease-standard);
+    margin-top: 0.5rem;
+  }
+
+  .top-scroll-down-btn:hover {
+    background-color: #E6002B;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 0 var(--color-border-strong);
+  }
+
+  .scroll-pill-indicator {
+    width: 14px;
+    height: 20px;
+    border: 2px solid #FFFFFF;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    padding-top: 2px;
+  }
+
+  .scroll-dot {
+    width: 3px;
+    height: 4px;
+    background-color: #FFFFFF;
+    border-radius: 2px;
+    animation: scroll-dot-bounce 1.5s ease-in-out infinite;
+  }
+
+  @keyframes scroll-dot-bounce {
+    0%, 100% { transform: translateY(0); opacity: 1; }
+    50% { transform: translateY(6px); opacity: 0.3; }
+  }
+</style>

@@ -1,0 +1,21 @@
+---
+interface Props {
+  variant?: 'pink' | 'yellow' | 'blue' | 'cream';
+  rotation?: 'neg-3' | 'neg-2' | 'neg-1' | 'pos-1' | 'pos-2' | 'pos-3' | 'none';
+  class?: string;
+}
+
+const {
+  variant = 'pink',
+  rotation = 'neg-2',
+  class: className = '',
+  ...rest
+} = Astro.props;
+
+const variantClass = `sticker-${variant}`;
+const rotationClass = rotation !== 'none' ? `rotate-${rotation}` : '';
+---
+
+<div class={`sticker ${variantClass} ${rotationClass} ${className}`} {...rest}>
+  <slot />
+</div>

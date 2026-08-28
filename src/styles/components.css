@@ -1,0 +1,225 @@
+/* ==========================================================================
+   UI Components & Shape Language - Hello Kitty Hackathon
+   Playful, Tactile, Editorial, Organic
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Buttons & CTAs
+   -------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  min-height: 48px;
+  padding: 0.85rem 1.75rem;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-family-display);
+  font-size: clamp(0.9rem, 0.95vw, 1rem);
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 
+    transform var(--duration-fast) var(--ease-spring),
+    box-shadow var(--duration-fast) var(--ease-spring),
+    background-color var(--duration-fast) var(--ease-standard),
+    color var(--duration-fast) var(--ease-standard),
+    border-color var(--duration-fast) var(--ease-standard);
+  border: 1.5px solid transparent;
+  user-select: none;
+  white-space: nowrap;
+  touch-action: manipulation;
+}
+
+.btn:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+@media (max-width: 640px) {
+  .btn-mobile-block {
+    width: 100%;
+  }
+}
+
+/* Primary CTA (Vibrant electric pink, tactile) */
+.btn-primary {
+  background-color: var(--color-primary-pink);
+  color: #FFFFFF;
+  border-color: var(--color-primary-pink);
+  box-shadow: 0 4px 14px rgba(255, 51, 102, 0.25);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-pink-hover);
+  border-color: var(--color-primary-pink-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 51, 102, 0.35);
+}
+
+/* Secondary CTA (Editorial warm surface with crisp border) */
+.btn-secondary {
+  background-color: var(--color-surface);
+  color: var(--color-text-dark);
+  border: 1.5px solid var(--color-border);
+  box-shadow: var(--shadow-subtle);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-surface-hover);
+  border-color: var(--color-text-dark);
+  transform: translateY(-2px);
+}
+
+/* Red Bow Accent CTA */
+.btn-red {
+  background-color: var(--color-red);
+  color: #FFFFFF;
+  border-color: var(--color-red);
+  box-shadow: 0 4px 14px rgba(230, 0, 43, 0.25);
+}
+
+.btn-red:hover {
+  background-color: var(--color-red-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(230, 0, 43, 0.35);
+}
+
+/* Blue Vintage Overalls CTA */
+.btn-blue {
+  background-color: var(--color-blue);
+  color: #FFFFFF;
+  border-color: var(--color-blue);
+}
+
+.btn-blue:hover {
+  background-color: var(--color-blue-hover);
+  transform: translateY(-2px);
+}
+
+/* --------------------------------------------------------------------------
+   2. Pills & Badges
+   -------------------------------------------------------------------------- */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-family-display);
+  font-size: clamp(0.75rem, 0.8vw, 0.825rem);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  line-height: 1;
+  border: 1px solid transparent;
+  width: fit-content;
+  max-width: 100%;
+}
+
+.pill-pink {
+  background-color: var(--color-primary-pink-subtle);
+  color: var(--color-primary-pink);
+  border-color: var(--color-border-pink);
+}
+
+.pill-cream {
+  background-color: var(--color-cream);
+  color: var(--color-text-dark);
+  border-color: var(--color-border);
+}
+
+.pill-yellow {
+  background-color: var(--color-yellow-subtle);
+  color: #946800;
+  border-color: #FFE599;
+}
+
+.pill-blue {
+  background-color: var(--color-blue-subtle);
+  color: var(--color-blue);
+  border-color: #C2D7FF;
+}
+
+.pill-dark {
+  background-color: var(--color-text-dark);
+  color: #FFFFFF;
+}
+
+/* --------------------------------------------------------------------------
+   3. Information Cards (Clean, organic, tactile, NO generic SaaS look)
+   -------------------------------------------------------------------------- */
+.info-card {
+  position: relative;
+  background-color: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.25rem, 3vw, 2.25rem);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  box-shadow: var(--shadow-subtle);
+  transition: 
+    transform var(--duration-normal) var(--ease-spring),
+    border-color var(--duration-fast) var(--ease-standard),
+    box-shadow var(--duration-normal) var(--ease-out-expo);
+}
+
+.info-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-text-dark);
+  box-shadow: var(--shadow-card);
+}
+
+/* Organic Asymmetrical Variant */
+.info-card-organic {
+  border-radius: var(--radius-organic-1);
+}
+
+.info-card-organic-alt {
+  border-radius: var(--radius-organic-2);
+}
+
+/* --------------------------------------------------------------------------
+   4. Decorative Stickers & Playful Physical Accents
+   -------------------------------------------------------------------------- */
+.sticker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.9rem;
+  background-color: var(--color-surface);
+  color: var(--color-text-dark);
+  border: 2px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sticker);
+  font-family: var(--font-family-display);
+  font-weight: 800;
+  font-size: clamp(0.775rem, 0.85vw, 0.875rem);
+  user-select: none;
+  max-width: 100%;
+  transition: transform var(--duration-fast) var(--ease-spring), box-shadow var(--duration-fast) var(--ease-spring);
+}
+
+.sticker:hover {
+  transform: translateY(-2px) rotate(1deg);
+  box-shadow: var(--shadow-sticker-hover);
+}
+
+.sticker-pink {
+  background-color: var(--color-primary-pink-subtle);
+  border-color: var(--color-border-strong);
+}
+
+.sticker-yellow {
+  background-color: var(--color-yellow-subtle);
+  border-color: var(--color-border-strong);
+}
+
+.sticker-blue {
+  background-color: var(--color-blue-subtle);
+  border-color: var(--color-border-strong);
+}
+
+.sticker-cream {
+  background-color: var(--color-cream);
+  border-color: var(--color-border-strong);
+}

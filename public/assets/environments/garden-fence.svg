@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 80" fill="none">
+  <!-- Cute White Picket Garden Fence -->
+  <g id="fence">
+    <!-- Horizontal Crossbars -->
+    <rect x="5" y="28" width="230" height="12" rx="4" fill="#FFF8EB" stroke="#121316" stroke-width="3"/>
+    <rect x="5" y="52" width="230" height="12" rx="4" fill="#FFF8EB" stroke="#121316" stroke-width="3"/>
+    <!-- Vertical Pickets -->
+    <path d="M20 75L20 20L28 8L36 20L36 75Z" fill="#FFFFFF" stroke="#121316" stroke-width="3"/>
+    <path d="M60 75L60 20L68 8L76 20L76 75Z" fill="#FFFFFF" stroke="#121316" stroke-width="3"/>
+    <path d="M100 75L100 20L108 8L116 20L116 75Z" fill="#FFFFFF" stroke="#121316" stroke-width="3"/>
+    <path d="M140 75L140 20L148 8L156 20L156 75Z" fill="#FFFFFF" stroke="#121316" stroke-width="3"/>
+    <path d="M180 75L180 20L188 8L196 20L196 75Z" fill="#FFFFFF" stroke="#121316" stroke-width="3"/>
+    <path d="M220 75L220 20L228 8L236 20L236 75Z" fill="#FFFFFF" stroke="#121316" stroke-width="3"/>
+  </g>
+</svg>

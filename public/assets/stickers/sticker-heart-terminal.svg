@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 110" fill="none">
+  <!-- Heart Terminal Sticker -->
+  <path d="M60 100C60 100 12 68 12 36C12 18 28 8 42 8C52 8 57 15 60 20C63 15 68 8 78 8C92 8 108 18 108 36C108 68 60 100 60 100Z" fill="#141417" stroke="#FF3366" stroke-width="4"/>
+  <text x="60" y="44" font-family="monospace" font-weight="700" font-size="10" fill="#75D982" text-anchor="middle">&gt; hello_world</text>
+  <text x="60" y="60" font-family="monospace" font-weight="700" font-size="9" fill="#FFFFFF" text-anchor="middle">kawaii.run()</text>
+</svg>

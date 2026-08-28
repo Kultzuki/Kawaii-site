@@ -1,0 +1,288 @@
+---
+import { TRACKS_DATA } from '@/data/tracks';
+import Pill from '@/components/ui/Pill.astro';
+import Sticker from '@/components/ui/Sticker.astro';
+import Icon from '@/components/ui/Icon.astro';
+---
+
+<section id="tracks" class="section section-tracks" aria-label="Challenge Tracks and Themes">
+  <div class="container">
+    <!-- Header -->
+    <div class="section-heading-wrap" data-reveal="fade">
+      <Pill variant="yellow">
+        <Icon name="sparkle" size={14} color="#946800" />
+        <span>Hackathon Tracks & Themes</span>
+      </Pill>
+      <h2 class="type-section-title section-main-title">
+        Choose Your <span class="text-pink">Creative Quest</span>
+      </h2>
+      <p class="type-body-lead section-intro-text">
+        Five dedicated national tracks competing for the ₹7,00,000+ total prize pool. Build standalone innovations or blend cross-track ideas for maximal impact.
+      </p>
+    </div>
+
+    <!-- Tracks Cards Grid (Horizontal Rich Cards) -->
+    <div class="tracks-stack" data-reveal-stagger>
+      {TRACKS_DATA.map((track, index) => (
+        <article class={`track-card track-card-${track.badgeVariant}`} id={track.id}>
+          <div class="track-header">
+            <div class="track-index-badge">
+              <span class="type-metadata track-num">{track.number}</span>
+              <span class="track-kicker">{track.kicker}</span>
+            </div>
+            <div class="track-prize-badge">
+              <Sticker variant={track.badgeVariant} rotation={index % 2 === 0 ? 'neg-2' : 'pos-2'}>
+                <Icon name={track.icon} size={14} />
+                <span>{track.categoryBadge}</span>
+              </Sticker>
+            </div>
+          </div>
+
+          <div class="track-body-grid">
+            <div class="track-main-info">
+              <div class="track-title-row">
+                <div class={`track-icon-wrap icon-${track.badgeVariant}`}>
+                  <Icon name={track.icon} size={24} />
+                </div>
+                <h3 class="type-subheading track-title">{track.title}</h3>
+              </div>
+
+              <p class="track-tagline">{track.tagline}</p>
+              <p class="type-body track-desc">{track.description}</p>
+
+              <div class="track-tech-row">
+                <span class="type-label tech-label">Suggested Tools:</span>
+                <div class="tech-tags-list">
+                  {track.suggestedTech.map((tech) => (
+                    <span class="tech-tag">{tech}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div class="track-prompts-box">
+              <span class="type-label prompts-title">Example Project Prompts:</span>
+              <ul class="prompts-list" role="list">
+                {track.promptExamples.map((prompt) => (
+                  <li class="prompt-item">
+                    <span class="prompt-bullet">&bull;</span>
+                    <span class="prompt-text">{prompt}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-tracks {
+    background-color: var(--color-surface);
+    border-top: 1.5px solid var(--color-border);
+    border-bottom: 1.5px solid var(--color-border);
+  }
+
+  .section-heading-wrap {
+    max-width: 780px;
+    margin: 0 auto var(--space-3xl);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xs);
+  }
+
+  .section-main-title {
+    margin-top: 0.5rem;
+  }
+
+  .section-intro-text {
+    max-width: 640px;
+    margin-top: var(--space-xs);
+  }
+
+  /* Tracks Stack */
+  .tracks-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .track-card {
+    position: relative;
+    background-color: var(--color-bg);
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: clamp(1.75rem, 3.5vw, 2.5rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    box-shadow: var(--shadow-subtle);
+    transition: transform var(--duration-normal) var(--ease-spring), border-color var(--duration-fast) var(--ease-standard), box-shadow var(--duration-normal) var(--ease-out-expo);
+  }
+
+  .track-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-text-dark);
+    box-shadow: var(--shadow-card);
+  }
+
+  .track-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .track-index-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .track-num {
+    font-weight: 800;
+    color: var(--color-primary-pink);
+    font-size: 0.95rem;
+  }
+
+  .track-kicker {
+    font-family: var(--font-family-display);
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-text-muted);
+  }
+
+  .track-body-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: flex-start;
+  }
+
+  @media (min-width: 960px) {
+    .track-body-grid {
+      grid-template-columns: 1.3fr 0.9fr;
+    }
+  }
+
+  .track-main-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .track-title-row {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+  }
+
+  .track-icon-wrap {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .icon-pink { color: var(--color-primary-pink); }
+  .icon-yellow { color: #946800; }
+  .icon-blue { color: var(--color-blue); }
+  .icon-cream { color: var(--color-text-dark); }
+
+  .track-title {
+    font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+    color: var(--color-text-dark);
+  }
+
+  .track-tagline {
+    font-family: var(--font-family-display);
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--color-primary-pink);
+  }
+
+  .track-desc {
+    color: var(--color-text-body);
+  }
+
+  .track-tech-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 0.75rem;
+    margin-top: 0.5rem;
+  }
+
+  .tech-label {
+    font-size: 0.75rem;
+  }
+
+  .tech-tags-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tech-tag {
+    font-family: var(--font-family-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.2rem 0.6rem;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-pill);
+    color: var(--color-text-dark);
+  }
+
+  /* Prompts Box */
+  .track-prompts-box {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .prompts-title {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+  }
+
+  .prompts-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .prompt-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--color-text-body);
+    line-height: 1.45;
+  }
+
+  .prompt-bullet {
+    color: var(--color-primary-pink);
+    font-weight: bold;
+  }
+</style>

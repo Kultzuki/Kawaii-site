@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 130" fill="none">
+  <!-- Large Fluffy Cloud with subtle sticker outline -->
+  <g id="cloud-large">
+    <path d="M40 100C22 100 10 88 10 70C10 54 22 42 38 42C42 22 62 10 88 10C112 10 132 24 138 44C148 38 162 38 172 44C184 26 208 26 220 42C232 58 226 82 212 94C204 100 192 100 180 100L40 100Z" fill="#FFFFFF" stroke="#121316" stroke-width="4.5" stroke-linejoin="round"/>
+    <ellipse cx="60" cy="55" rx="14" ry="7" fill="#F4EFEA" opacity="0.6"/>
+  </g>
+</svg>

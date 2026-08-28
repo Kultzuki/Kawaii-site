@@ -1,0 +1,578 @@
+---
+import Button from '@/components/ui/Button.astro';
+import Pill from '@/components/ui/Pill.astro';
+import Sticker from '@/components/ui/Sticker.astro';
+import Icon from '@/components/ui/Icon.astro';
+---
+
+<section class="story-section-container" id="event" aria-label="Hackathon Illustrated Story Journey">
+  <!-- Pinned Story Stage -->
+  <div class="story-stage" id="story-stage">
+    <!-- Story Progress Indicator Header -->
+    <div class="story-progress-bar-wrap" aria-hidden="true">
+      <div class="story-progress-line" id="story-progress-fill"></div>
+      <div class="story-nav-pills">
+        <div class="story-nav-pill active" data-story-dot>
+          <span class="dot-num">01</span>
+          <span class="dot-label">The National Call</span>
+        </div>
+        <div class="story-nav-pill" data-story-dot>
+          <span class="dot-num">02</span>
+          <span class="dot-label">36-Hour Sprint</span>
+        </div>
+        <div class="story-nav-pill" data-story-dot>
+          <span class="dot-num">03</span>
+          <span class="dot-label">Grand Finale</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="container story-content-container">
+      <div class="scenes-viewport">
+        <!-- ====================================================================
+             SCENE 1: The National Call & Ideation
+             ==================================================================== -->
+        <article class="story-scene scene-1" id="story-scene-1" aria-label="Scene 1: The National Call">
+          <div class="scene-grid">
+            <!-- Narrative Column -->
+            <div class="scene-text">
+              <div class="scene-kicker">
+                <Pill variant="pink">
+                  <Icon name="sparkle" size={12} color="var(--color-primary-pink)" />
+                  <span>Act 01 // Phase 1: Online PPT & Ideation Round</span>
+                </Pill>
+              </div>
+
+              <h2 class="type-section-title scene-title">
+                Phase 1: Online PPT <span class="text-pink">Synopsis Submission.</span>
+              </h2>
+
+              <p class="type-body-lead scene-description">
+                From Delhi to Bengaluru, Mumbai to Dehradun, student teams of 2–4 conceptualize solutions and submit their project slide decks (PPT/PDF) across 5 national tracks.
+              </p>
+
+              <div class="scene-lore-row">
+                <Sticker variant="cream" rotation="neg-2" class="scene-deco">
+                  <Icon name="bow" size={16} color="var(--color-red)" />
+                  <span>Online PPT Round</span>
+                </Sticker>
+                <Sticker variant="yellow" rotation="pos-2" class="scene-deco">
+                  <span>300+ Teams Competing</span>
+                </Sticker>
+              </div>
+            </div>
+
+            <!-- Visual Column -->
+            <div class="scene-visual">
+              <div class="scene-canvas-frame frame-cottage">
+                <!-- Illustrated Campus & Hills Environment -->
+                <div class="visual-bg-cloud">
+                  <img src="/assets/environments/cloud-fluffy-large.svg" alt="" width="220" height="120" loading="lazy" />
+                </div>
+                <div class="visual-house-wrap">
+                  <img src="/assets/environments/kawaii-house.svg" alt="Tula's University Campus" width="220" height="190" loading="lazy" />
+                </div>
+                <div class="visual-fence-wrap">
+                  <img src="/assets/environments/garden-fence.svg" alt="Picket Fence" width="260" height="80" loading="lazy" />
+                </div>
+                <!-- Floating Lore Elements -->
+                <div class="visual-apple-float scene-deco">
+                  <img src="/assets/decorations/cute-apple.svg" alt="Cute Apple" width="46" height="52" loading="lazy" />
+                </div>
+                <div class="visual-flower-float scene-deco">
+                  <img src="/assets/decorations/kawaii-flower.svg" alt="Kawaii Flower" width="40" height="40" loading="lazy" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- ====================================================================
+             SCENE 2: The 36-Hour In-Person Campus Build Sprint
+             ==================================================================== -->
+        <article class="story-scene scene-2" id="story-scene-2" aria-label="Scene 2: The 36-Hour Campus Sprint">
+          <div class="scene-grid">
+            <!-- Narrative Column -->
+            <div class="scene-text">
+              <div class="scene-kicker">
+                <Pill variant="blue">
+                  <Icon name="terminal" size={12} color="var(--color-blue)" />
+                  <span>Act 02 // Phase 2: In-Person 36-Hour Campus Sprint</span>
+                </Pill>
+              </div>
+
+              <h2 class="type-section-title scene-title">
+                Phase 2: 36 Hours <span class="text-blue">On-Campus in Dehradun.</span>
+              </h2>
+
+              <p class="type-body-lead scene-description">
+                Selected finalist teams assemble in-person on September 25–26 at Tula's University campus in Dehradun. 36 hours of non-stop physical coding, hardware labs, meals, stay, and active mentor checkpoints.
+              </p>
+
+              <div class="scene-lore-row">
+                <Sticker variant="blue" rotation="neg-1" class="scene-deco">
+                  <Icon name="code" size={16} color="var(--color-blue)" />
+                  <span>In-Person Campus Labs</span>
+                </Sticker>
+                <Sticker variant="pink" rotation="pos-3" class="scene-deco">
+                  <Icon name="heart" size={16} color="var(--color-primary-pink)" />
+                  <span>Meals & Stay Included</span>
+                </Sticker>
+              </div>
+            </div>
+
+            <!-- Visual Column -->
+            <div class="scene-visual">
+              <div class="scene-canvas-frame frame-tech">
+                <div class="tech-grid-pattern"></div>
+                <!-- Coding Character Drop-in Slot -->
+                <div class="visual-character-wrap">
+                  <img
+                    src="/assets/characters/kitty-coding-placeholder.svg"
+                    alt="Hello Kitty Coding 36-Hour Hackathon"
+                    width="280"
+                    height="340"
+                    loading="lazy"
+                  />
+                </div>
+                <!-- Floating Terminal Heart Badge -->
+                <div class="visual-terminal-float scene-deco">
+                  <img src="/assets/stickers/sticker-heart-terminal.svg" alt="Terminal Heart" width="100" height="90" loading="lazy" />
+                </div>
+                <div class="visual-strawberry-float scene-deco">
+                  <img src="/assets/decorations/cute-strawberry.svg" alt="Strawberry" width="44" height="48" loading="lazy" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- ====================================================================
+             SCENE 3: The Grand Finale & ₹7 Lakh Awards
+             ==================================================================== -->
+        <article class="story-scene scene-3" id="story-scene-3" aria-label="Scene 3: The Creation & Prizes">
+          <div class="scene-grid">
+            <!-- Narrative Column -->
+            <div class="scene-text">
+              <div class="scene-kicker">
+                <Pill variant="yellow">
+                  <Icon name="trophy" size={12} color="#946800" />
+                  <span>Act 03 // Pitching & National Victory</span>
+                </Pill>
+              </div>
+
+              <h2 class="type-section-title scene-title">
+                Pitch to Jury. <span class="text-pink">Win ₹7 Lakhs+.</span>
+              </h2>
+
+              <p class="type-body-lead scene-description">
+                Demonstrate working prototypes before the jury. Win ₹65K 1st, ₹45K 2nd, ₹35K 3rd cash awards, ₹1.5 Lakh incubation grants per winning squad, and prestigious trophies.
+              </p>
+
+              <div class="scene-actions-row">
+                <Button href="#prizes" variant="primary" size="lg" class="scene-deco btn-mobile-block">
+                  <span>Explore ₹7 Lakhs Prizes</span>
+                  <Icon name="arrow-right" size={18} color="#FFFFFF" />
+                </Button>
+                <Sticker variant="yellow" rotation="pos-2" class="scene-deco">
+                  <Icon name="sparkle" size={16} color="#946800" />
+                  <span>₹7,00,000+ Prize Pool</span>
+                </Sticker>
+              </div>
+            </div>
+
+            <!-- Visual Column -->
+            <div class="scene-visual">
+              <div class="scene-canvas-frame frame-celebration">
+                <!-- Celebration Character Drop-in Slot -->
+                <div class="visual-character-wrap">
+                  <img
+                    src="/assets/characters/kitty-celebration-placeholder.svg"
+                    alt="Hello Kitty Celebration and Trophy"
+                    width="290"
+                    height="350"
+                    loading="lazy"
+                  />
+                </div>
+                <!-- Floating Prizes Starburst & Sweets -->
+                <div class="visual-prize-float scene-deco">
+                  <img src="/assets/stickers/sticker-prizes.svg" alt="Prize Pool" width="110" height="110" loading="lazy" />
+                </div>
+                <div class="visual-candy-float scene-deco">
+                  <img src="/assets/decorations/candy-sweet.svg" alt="Candy Sweet" width="60" height="35" loading="lazy" />
+                </div>
+                <div class="visual-ribbon-float scene-deco">
+                  <img src="/assets/decorations/ribbon-streamer.svg" alt="Ribbon Streamer" width="120" height="40" loading="lazy" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { initStoryScrollSequence } from '@/animations/story';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initStoryScrollSequence({
+      container: '#story-stage',
+      scene1: '#story-scene-1',
+      scene2: '#story-scene-2',
+      scene3: '#story-scene-3',
+      progressBar: '#story-progress-fill',
+      navDots: '[data-story-dot]',
+    });
+  });
+</script>
+
+<style>
+  /* --------------------------------------------------------------------------
+     Story Section Outer Wrapper
+     -------------------------------------------------------------------------- */
+  .story-section-container {
+    position: relative;
+    background-color: var(--color-surface);
+    border-top: 1.5px solid var(--color-border);
+    border-bottom: 1.5px solid var(--color-border);
+    overflow: hidden;
+  }
+
+  .story-stage {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(2rem, 5vw, 4rem) 0;
+  }
+
+  /* --------------------------------------------------------------------------
+     Progress Bar Header & Act Pills
+     -------------------------------------------------------------------------- */
+  .story-progress-bar-wrap {
+    position: absolute;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(90%, 640px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    z-index: 20;
+  }
+
+  .story-progress-line {
+    width: 100%;
+    height: 4px;
+    background: var(--color-primary-pink);
+    border-radius: var(--radius-pill);
+    transform: scaleX(0);
+    transform-origin: left center;
+    box-shadow: 0 0 10px rgba(255, 51, 102, 0.4);
+  }
+
+  .story-nav-pills {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .story-nav-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.25rem 0.75rem;
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-pill);
+    font-family: var(--font-family-display);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-text-muted);
+    transition: all var(--duration-fast) var(--ease-standard);
+  }
+
+  .story-nav-pill.active {
+    background-color: var(--color-primary-pink-subtle);
+    color: var(--color-primary-pink);
+    border-color: var(--color-border-pink);
+    transform: scale(1.05);
+  }
+
+  .dot-num {
+    font-family: var(--font-family-mono);
+    font-size: 0.7rem;
+  }
+
+  /* --------------------------------------------------------------------------
+     Scenes Viewport & Layout
+     -------------------------------------------------------------------------- */
+  .story-content-container {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    margin-top: 2rem;
+  }
+
+  .scenes-viewport {
+    position: relative;
+    min-height: 520px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .story-scene {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .scene-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(1.5rem, 5vw, 4rem);
+    align-items: center;
+    width: 100%;
+  }
+
+  @media (min-width: 960px) {
+    .scene-grid {
+      grid-template-columns: 1.15fr 0.85fr;
+    }
+  }
+
+  /* --------------------------------------------------------------------------
+     Scene Typography & Narrative Column
+     -------------------------------------------------------------------------- */
+  .scene-text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    max-width: 580px;
+  }
+
+  .scene-title {
+    font-size: clamp(1.75rem, 4vw + 0.25rem, 3.25rem);
+    line-height: 1.12;
+    letter-spacing: -0.03em;
+  }
+
+  .scene-description {
+    color: var(--color-text-body);
+  }
+
+  .scene-lore-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+
+  .scene-actions-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
+    width: 100%;
+  }
+
+  /* --------------------------------------------------------------------------
+     Scene Illustrated Visual Canvas Frames
+     -------------------------------------------------------------------------- */
+  .scene-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .scene-canvas-frame {
+    position: relative;
+    width: 100%;
+    max-width: 440px;
+    min-height: 360px;
+    background-color: var(--color-bg);
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: 1.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+    box-shadow: var(--shadow-card);
+  }
+
+  /* Frame 1: Campus & Garden Theme */
+  .frame-cottage {
+    background: radial-gradient(circle at 50% 30%, #FFF5F8 0%, #FAF7F4 80%);
+  }
+
+  .visual-bg-cloud {
+    position: absolute;
+    top: -20px;
+    left: -15px;
+    opacity: 0.9;
+  }
+
+  .visual-house-wrap {
+    position: relative;
+    z-index: 3;
+  }
+
+  .visual-fence-wrap {
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+    z-index: 4;
+  }
+
+  .visual-apple-float {
+    position: absolute;
+    top: 15%;
+    right: -8px;
+    z-index: 5;
+  }
+
+  .visual-flower-float {
+    position: absolute;
+    bottom: 20%;
+    left: -8px;
+    z-index: 5;
+  }
+
+  /* Frame 2: Tech Cyber Theme */
+  .frame-tech {
+    background: radial-gradient(circle at 50% 30%, #EEF4FF 0%, #FAF7F4 80%);
+  }
+
+  .tech-grid-pattern {
+    position: absolute;
+    inset: 0;
+    background-image: url('/assets/textures/grid-paper-pattern.svg');
+    opacity: 0.4;
+    border-radius: var(--radius-xl);
+  }
+
+  .visual-character-wrap {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+  }
+
+  .visual-terminal-float {
+    position: absolute;
+    top: -12px;
+    right: -10px;
+    z-index: 5;
+  }
+
+  .visual-strawberry-float {
+    position: absolute;
+    bottom: 12%;
+    left: -8px;
+    z-index: 5;
+  }
+
+  /* Frame 3: Celebration Arena Theme */
+  .frame-celebration {
+    background: radial-gradient(circle at 50% 30%, #FFF9E6 0%, #FAF7F4 80%);
+  }
+
+  .visual-prize-float {
+    position: absolute;
+    top: -15px;
+    right: -10px;
+    z-index: 5;
+  }
+
+  .visual-candy-float {
+    position: absolute;
+    bottom: 20%;
+    left: -10px;
+    z-index: 5;
+  }
+
+  .visual-ribbon-float {
+    position: absolute;
+    bottom: -10px;
+    right: 15px;
+    z-index: 5;
+  }
+
+  /* --------------------------------------------------------------------------
+     Mobile Responsive Fallbacks
+     -------------------------------------------------------------------------- */
+  @media (max-width: 959px) {
+    .story-stage {
+      min-height: auto;
+      padding: 2.5rem 0 3.5rem;
+    }
+
+    .story-progress-bar-wrap {
+      position: static;
+      transform: none;
+      width: 100%;
+      margin-bottom: 1.5rem;
+    }
+
+    .scenes-viewport {
+      position: static;
+      min-height: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    .story-scene {
+      position: static;
+      inset: auto;
+      width: 100%;
+      opacity: 1 !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+      padding-bottom: 2rem;
+      border-bottom: 1.5px solid var(--color-border);
+    }
+
+    .story-scene:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .scene-canvas-frame {
+      min-height: 280px;
+      padding: 1.25rem;
+      overflow: hidden;
+    }
+
+    .visual-house-wrap img,
+    .visual-character-wrap img {
+      max-width: 220px;
+      height: auto;
+    }
+
+    .visual-apple-float,
+    .visual-flower-float,
+    .visual-terminal-float,
+    .visual-strawberry-float,
+    .visual-prize-float,
+    .visual-candy-float,
+    .visual-ribbon-float {
+      transform: scale(0.85);
+    }
+  }
+</style>
